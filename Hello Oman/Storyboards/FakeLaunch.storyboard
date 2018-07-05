@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pWo-Oo-SHg">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Fake Launch ScreenVC-->
+        <scene sceneID="LJl-tp-tCu">
+            <objects>
+                <viewController storyboardIdentifier="FakeLaunchScreenVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pWo-Oo-SHg" customClass="FakeLaunchScreenVC" customModule="Hello_Oman" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QOQ-6m-5tD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashImg" translatesAutoresizingMaskIntoConstraints="NO" id="8gn-Dd-Led">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8gn-Dd-Led" secondAttribute="trailing" id="4aF-JU-nkD"/>
+                            <constraint firstAttribute="bottom" secondItem="8gn-Dd-Led" secondAttribute="bottom" id="Ex2-yF-wEU"/>
+                            <constraint firstItem="8gn-Dd-Led" firstAttribute="leading" secondItem="QOQ-6m-5tD" secondAttribute="leading" id="QAN-xa-QOy"/>
+                            <constraint firstItem="8gn-Dd-Led" firstAttribute="top" secondItem="QOQ-6m-5tD" secondAttribute="top" id="idN-i9-bEu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IDX-fV-HEz"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VGh-Zk-Rfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="SplashImg" width="320" height="561"/>
+    </resources>
+</document>

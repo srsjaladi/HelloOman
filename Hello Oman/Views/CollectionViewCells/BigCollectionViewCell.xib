@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BigCollectionViewCell" customModule="Hello_Oman" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hG-ya-9fX">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="qWb-PT-dmC">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cool " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdS-Mf-4d2">
+                                <rect key="frame" x="0.0" y="80" width="150" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.6000220070422535" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="BvD-Ag-bV5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWJ-Wt-CwG">
+                                <rect key="frame" x="0.0" y="64" width="43" height="16"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.42352941176470588" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="43" id="GUI-Oc-wA2"/>
+                                    <constraint firstAttribute="height" constant="16" id="srz-6L-LDv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EdS-Mf-4d2" firstAttribute="top" secondItem="qWJ-Wt-CwG" secondAttribute="bottom" id="ENS-og-HZ9"/>
+                            <constraint firstAttribute="bottom" secondItem="EdS-Mf-4d2" secondAttribute="bottom" id="Zh8-nu-sm7"/>
+                            <constraint firstAttribute="trailing" secondItem="qWb-PT-dmC" secondAttribute="trailing" id="ccS-j1-HHf"/>
+                            <constraint firstItem="qWJ-Wt-CwG" firstAttribute="leading" secondItem="0hG-ya-9fX" secondAttribute="leading" id="eKR-3c-5ia"/>
+                            <constraint firstItem="EdS-Mf-4d2" firstAttribute="leading" secondItem="0hG-ya-9fX" secondAttribute="leading" id="hex-tl-GOf"/>
+                            <constraint firstItem="qWb-PT-dmC" firstAttribute="leading" secondItem="0hG-ya-9fX" secondAttribute="leading" id="nam-1p-bdI"/>
+                            <constraint firstItem="qWb-PT-dmC" firstAttribute="top" secondItem="0hG-ya-9fX" secondAttribute="top" id="of5-Ck-ln6"/>
+                            <constraint firstAttribute="bottom" secondItem="qWb-PT-dmC" secondAttribute="bottom" id="rMi-8o-wfj"/>
+                            <constraint firstAttribute="trailing" secondItem="EdS-Mf-4d2" secondAttribute="trailing" id="x6b-cc-usa"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="0hG-ya-9fX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4gG-Wf-baj"/>
+                <constraint firstItem="0hG-ya-9fX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="GzA-mb-MHg"/>
+                <constraint firstAttribute="trailing" secondItem="0hG-ya-9fX" secondAttribute="trailing" id="I5j-Ix-JkT"/>
+                <constraint firstAttribute="bottom" secondItem="0hG-ya-9fX" secondAttribute="bottom" id="XJL-1E-0IQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="157" height="123"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="2"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="imageTitle" destination="qWb-PT-dmC" id="DXj-zD-7AR"/>
+                <outlet property="lblLatest" destination="qWJ-Wt-CwG" id="pUh-BP-Qwy"/>
+                <outlet property="lblTitle" destination="EdS-Mf-4d2" id="fts-bn-GGU"/>
+            </connections>
+            <point key="canvasLocation" x="111" y="136"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="DefaultImage" width="150" height="100"/>
+    </resources>
+</document>

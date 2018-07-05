@@ -1,0 +1,845 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		550610DC20EA94E000D0B49C /* HomeSectionHeaderCReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550610DA20EA94E000D0B49C /* HomeSectionHeaderCReusableView.swift */; };
+		550610DD20EA94E000D0B49C /* HomeSectionHeaderCReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550610DB20EA94E000D0B49C /* HomeSectionHeaderCReusableView.xib */; };
+		550610E020EAA18600D0B49C /* DetaildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550610DE20EAA18600D0B49C /* DetaildTableViewCell.swift */; };
+		550610E120EAA18600D0B49C /* DetaildTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550610DF20EAA18600D0B49C /* DetaildTableViewCell.xib */; };
+		550E81FC20EA232400C6E137 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550E81FA20EA232300C6E137 /* CollectionViewTableViewCell.swift */; };
+		550E81FD20EA232400C6E137 /* CollectionViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550E81FB20EA232400C6E137 /* CollectionViewTableViewCell.xib */; };
+		550E820120EA247D00C6E137 /* BigCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550E81FF20EA247D00C6E137 /* BigCollectionViewCell.swift */; };
+		550E820220EA247D00C6E137 /* BigCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550E820020EA247D00C6E137 /* BigCollectionViewCell.xib */; };
+		552EB7B620E89A0D00BB6B90 /* ConstantsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552EB7B420E89A0D00BB6B90 /* ConstantsAPI.swift */; };
+		552EB7B720E89A0D00BB6B90 /* HelloOmanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552EB7B520E89A0D00BB6B90 /* HelloOmanAPI.swift */; };
+		552EB7B920E89A8E00BB6B90 /* HelloOmanError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552EB7B820E89A8E00BB6B90 /* HelloOmanError.swift */; };
+		552EB7BC20E89E0600BB6B90 /* CurrentUser+Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552EB7BA20E89E0600BB6B90 /* CurrentUser+Manager.swift */; };
+		552EB7BD20E89E0600BB6B90 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552EB7BB20E89E0600BB6B90 /* CurrentUser.swift */; };
+		552EB7BF20E8AD6100BB6B90 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 552EB7BE20E8AD6100BB6B90 /* GoogleService-Info.plist */; };
+		552EB7C120E8C0C800BB6B90 /* MBProgressHUD+HelloOmanHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552EB7C020E8C0C700BB6B90 /* MBProgressHUD+HelloOmanHelper.swift */; };
+		552EB7C320E8C1F800BB6B90 /* UIViewController+HelloOmanHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552EB7C220E8C1F800BB6B90 /* UIViewController+HelloOmanHelper.swift */; };
+		55404BDB20EB45ED0071AD9D /* ListViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55404BD920EB45ED0071AD9D /* ListViewTableViewCell.swift */; };
+		55404BDC20EB45ED0071AD9D /* ListViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55404BDA20EB45ED0071AD9D /* ListViewTableViewCell.xib */; };
+		55404BDF20EB73240071AD9D /* SmallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55404BDD20EB73240071AD9D /* SmallCollectionViewCell.swift */; };
+		55404BE020EB73240071AD9D /* SmallCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55404BDE20EB73240071AD9D /* SmallCollectionViewCell.xib */; };
+		55404BE320EB763D0071AD9D /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55404BE220EB763D0071AD9D /* FavouritesViewController.swift */; };
+		55404BE520EB7D0B0071AD9D /* SavePackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55404BE420EB7D0B0071AD9D /* SavePackagesViewController.swift */; };
+		55404BE720EB7D210071AD9D /* SavedTravelIdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55404BE620EB7D210071AD9D /* SavedTravelIdeasViewController.swift */; };
+		55404BEA20EB9E3F0071AD9D /* ChangePwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55404BE920EB9E3F0071AD9D /* ChangePwViewController.swift */; };
+		55404BEC20EBD7B20071AD9D /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55404BEB20EBD7B20071AD9D /* MyAccountViewController.swift */; };
+		556072A220E8E78E00CAC359 /* User+Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556072A020E8E78E00CAC359 /* User+Serializable.swift */; };
+		556072A320E8E78E00CAC359 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556072A120E8E78E00CAC359 /* User.swift */; };
+		556072A520E8E84A00CAC359 /* AgentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556072A420E8E84900CAC359 /* AgentInfo.swift */; };
+		556A0A7820E0BC64002E3FFF /* LeftMenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556A0A7620E0BC64002E3FFF /* LeftMenuTVC.swift */; };
+		556A0A7920E0BC64002E3FFF /* LeftMenuTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556A0A7720E0BC64002E3FFF /* LeftMenuTVCell.swift */; };
+		55A4F5E420E6440B008C843C /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5D820E6440A008C843C /* Roboto-LightItalic.ttf */; };
+		55A4F5E520E6440B008C843C /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5D920E6440A008C843C /* Roboto-MediumItalic.ttf */; };
+		55A4F5E620E6440B008C843C /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5DA20E6440A008C843C /* Roboto-BlackItalic.ttf */; };
+		55A4F5E720E6440B008C843C /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5DB20E6440A008C843C /* Roboto-BoldItalic.ttf */; };
+		55A4F5E820E6440B008C843C /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5DC20E6440B008C843C /* Roboto-Bold.ttf */; };
+		55A4F5E920E6440B008C843C /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5DD20E6440B008C843C /* Roboto-Thin.ttf */; };
+		55A4F5EA20E6440B008C843C /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5DE20E6440B008C843C /* Roboto-Medium.ttf */; };
+		55A4F5EB20E6440B008C843C /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5DF20E6440B008C843C /* Roboto-Black.ttf */; };
+		55A4F5EC20E6440B008C843C /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5E020E6440B008C843C /* Roboto-Italic.ttf */; };
+		55A4F5ED20E6440B008C843C /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5E120E6440B008C843C /* Roboto-ThinItalic.ttf */; };
+		55A4F5EE20E6440B008C843C /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5E220E6440B008C843C /* Roboto-Light.ttf */; };
+		55A4F5EF20E6440B008C843C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5E320E6440B008C843C /* Roboto-Regular.ttf */; };
+		55B0CBCF20ECF6A3006B7E5A /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0CBCE20ECF6A3006B7E5A /* CAPSPageMenu.swift */; };
+		55F5AED420DF653A0076CC0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AED320DF653A0076CC0F /* AppDelegate.swift */; };
+		55F5AED920DF653A0076CC0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F5AED720DF653A0076CC0F /* Main.storyboard */; };
+		55F5AEDB20DF653C0076CC0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55F5AEDA20DF653C0076CC0F /* Assets.xcassets */; };
+		55F5AEDE20DF653C0076CC0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F5AEDC20DF653C0076CC0F /* LaunchScreen.storyboard */; };
+		55F5AEF020DFACC90076CC0F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AEEF20DFACC90076CC0F /* UIView+Extensions.swift */; };
+		55F5AEF220DFBC160076CC0F /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F5AEF120DFBC160076CC0F /* Home.storyboard */; };
+		55F5AEF420DFFC490076CC0F /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AEF320DFFC490076CC0F /* LandingViewController.swift */; };
+		55F5AEF620DFFC750076CC0F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AEF520DFFC750076CC0F /* SignInViewController.swift */; };
+		55F5AEF820DFFC8A0076CC0F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AEF720DFFC8A0076CC0F /* SignUpViewController.swift */; };
+		55F5AEFA20DFFCA40076CC0F /* ForgotPswViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AEF920DFFCA40076CC0F /* ForgotPswViewController.swift */; };
+		55F5AEFE20DFFEC70076CC0F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AEFD20DFFEC70076CC0F /* HomeViewController.swift */; };
+		55F5AF0020DFFEF50076CC0F /* PackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AEFF20DFFEF50076CC0F /* PackagesViewController.swift */; };
+		55F5AF0220DFFF040076CC0F /* TravelPlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AF0120DFFF040076CC0F /* TravelPlansViewController.swift */; };
+		55F5AF0520E0083C0076CC0F /* UIColor+Hello Oman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AF0420E0083C0076CC0F /* UIColor+Hello Oman.swift */; };
+		55F5AF0820E009A30076CC0F /* UIFont+Hello Oman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AF0720E009A30076CC0F /* UIFont+Hello Oman.swift */; };
+		55F5AF0E20E00F670076CC0F /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AF0B20E00F670076CC0F /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		55F5AF0F20E00F670076CC0F /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AF0C20E00F670076CC0F /* TPKeyboardAvoidingScrollView.m */; };
+		55F5AF1320E00F710076CC0F /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5AF1120E00F700076CC0F /* SlideMenuController.swift */; };
+		55F5CB6A20ED23D200265B52 /* FakeLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F5CB6920ED23D200265B52 /* FakeLaunch.storyboard */; };
+		55F5CB6C20ED241300265B52 /* FakeLaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F5CB6B20ED241300265B52 /* FakeLaunchScreenVC.swift */; };
+		9003D6DF542A61B5CE17111E /* Pods_Hello_Oman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C0609E585687D25D572CC0 /* Pods_Hello_Oman.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		27DFBFFEB1A4C2CB2B6574D7 /* Pods-Hello Oman.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hello Oman.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hello Oman/Pods-Hello Oman.release.xcconfig"; sourceTree = "<group>"; };
+		550610DA20EA94E000D0B49C /* HomeSectionHeaderCReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSectionHeaderCReusableView.swift; sourceTree = "<group>"; };
+		550610DB20EA94E000D0B49C /* HomeSectionHeaderCReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeSectionHeaderCReusableView.xib; sourceTree = "<group>"; };
+		550610DE20EAA18600D0B49C /* DetaildTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaildTableViewCell.swift; sourceTree = "<group>"; };
+		550610DF20EAA18600D0B49C /* DetaildTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetaildTableViewCell.xib; sourceTree = "<group>"; };
+		550E81FA20EA232300C6E137 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		550E81FB20EA232400C6E137 /* CollectionViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewTableViewCell.xib; sourceTree = "<group>"; };
+		550E81FF20EA247D00C6E137 /* BigCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigCollectionViewCell.swift; sourceTree = "<group>"; };
+		550E820020EA247D00C6E137 /* BigCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigCollectionViewCell.xib; sourceTree = "<group>"; };
+		552EB7B420E89A0D00BB6B90 /* ConstantsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsAPI.swift; sourceTree = "<group>"; };
+		552EB7B520E89A0D00BB6B90 /* HelloOmanAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloOmanAPI.swift; sourceTree = "<group>"; };
+		552EB7B820E89A8E00BB6B90 /* HelloOmanError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloOmanError.swift; sourceTree = "<group>"; };
+		552EB7BA20E89E0600BB6B90 /* CurrentUser+Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CurrentUser+Manager.swift"; sourceTree = "<group>"; };
+		552EB7BB20E89E0600BB6B90 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		552EB7BE20E8AD6100BB6B90 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		552EB7C020E8C0C700BB6B90 /* MBProgressHUD+HelloOmanHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+HelloOmanHelper.swift"; sourceTree = "<group>"; };
+		552EB7C220E8C1F800BB6B90 /* UIViewController+HelloOmanHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HelloOmanHelper.swift"; sourceTree = "<group>"; };
+		55404BD920EB45ED0071AD9D /* ListViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewTableViewCell.swift; sourceTree = "<group>"; };
+		55404BDA20EB45ED0071AD9D /* ListViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewTableViewCell.xib; sourceTree = "<group>"; };
+		55404BDD20EB73240071AD9D /* SmallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCollectionViewCell.swift; sourceTree = "<group>"; };
+		55404BDE20EB73240071AD9D /* SmallCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallCollectionViewCell.xib; sourceTree = "<group>"; };
+		55404BE220EB763D0071AD9D /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		55404BE420EB7D0B0071AD9D /* SavePackagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePackagesViewController.swift; sourceTree = "<group>"; };
+		55404BE620EB7D210071AD9D /* SavedTravelIdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTravelIdeasViewController.swift; sourceTree = "<group>"; };
+		55404BE920EB9E3F0071AD9D /* ChangePwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwViewController.swift; sourceTree = "<group>"; };
+		55404BEB20EBD7B20071AD9D /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		556072A020E8E78E00CAC359 /* User+Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Serializable.swift"; sourceTree = "<group>"; };
+		556072A120E8E78E00CAC359 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		556072A420E8E84900CAC359 /* AgentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentInfo.swift; sourceTree = "<group>"; };
+		556A0A7620E0BC64002E3FFF /* LeftMenuTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTVC.swift; sourceTree = "<group>"; };
+		556A0A7720E0BC64002E3FFF /* LeftMenuTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTVCell.swift; sourceTree = "<group>"; };
+		55A4F5D820E6440A008C843C /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		55A4F5D920E6440A008C843C /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		55A4F5DA20E6440A008C843C /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		55A4F5DB20E6440A008C843C /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		55A4F5DC20E6440B008C843C /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		55A4F5DD20E6440B008C843C /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		55A4F5DE20E6440B008C843C /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		55A4F5DF20E6440B008C843C /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		55A4F5E020E6440B008C843C /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		55A4F5E120E6440B008C843C /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		55A4F5E220E6440B008C843C /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		55A4F5E320E6440B008C843C /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		55B0CBCE20ECF6A3006B7E5A /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
+		55F5AED020DF653A0076CC0F /* Hello Oman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hello Oman.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55F5AED320DF653A0076CC0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		55F5AED820DF653A0076CC0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		55F5AEDA20DF653C0076CC0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		55F5AEDD20DF653C0076CC0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		55F5AEDF20DF653C0076CC0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55F5AEEF20DFACC90076CC0F /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		55F5AEF120DFBC160076CC0F /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		55F5AEF320DFFC490076CC0F /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		55F5AEF520DFFC750076CC0F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		55F5AEF720DFFC8A0076CC0F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		55F5AEF920DFFCA40076CC0F /* ForgotPswViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPswViewController.swift; sourceTree = "<group>"; };
+		55F5AEFD20DFFEC70076CC0F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		55F5AEFF20DFFEF50076CC0F /* PackagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesViewController.swift; sourceTree = "<group>"; };
+		55F5AF0120DFFF040076CC0F /* TravelPlansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlansViewController.swift; sourceTree = "<group>"; };
+		55F5AF0420E0083C0076CC0F /* UIColor+Hello Oman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hello Oman.swift"; sourceTree = "<group>"; };
+		55F5AF0720E009A30076CC0F /* UIFont+Hello Oman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Hello Oman.swift"; sourceTree = "<group>"; };
+		55F5AF0A20E00F670076CC0F /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		55F5AF0B20E00F670076CC0F /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		55F5AF0C20E00F670076CC0F /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		55F5AF0D20E00F670076CC0F /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		55F5AF1120E00F700076CC0F /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
+		55F5AF1720E00FBE0076CC0F /* Hello Oman-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hello Oman-Bridging-Header.h"; sourceTree = "<group>"; };
+		55F5CB6920ED23D200265B52 /* FakeLaunch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FakeLaunch.storyboard; sourceTree = "<group>"; };
+		55F5CB6B20ED241300265B52 /* FakeLaunchScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeLaunchScreenVC.swift; sourceTree = "<group>"; };
+		68338F650E49C2729B121343 /* Pods-Hello Oman.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hello Oman.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hello Oman/Pods-Hello Oman.debug.xcconfig"; sourceTree = "<group>"; };
+		E4C0609E585687D25D572CC0 /* Pods_Hello_Oman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hello_Oman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		55F5AECD20DF653A0076CC0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9003D6DF542A61B5CE17111E /* Pods_Hello_Oman.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1E4E5EE5E6B79ADBFBDB3D90 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4C0609E585687D25D572CC0 /* Pods_Hello_Oman.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4A7585DD32D3FA6E4FA9F68F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				68338F650E49C2729B121343 /* Pods-Hello Oman.debug.xcconfig */,
+				27DFBFFEB1A4C2CB2B6574D7 /* Pods-Hello Oman.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		550E81F920EA208200C6E137 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				550E81FA20EA232300C6E137 /* CollectionViewTableViewCell.swift */,
+				550E81FB20EA232400C6E137 /* CollectionViewTableViewCell.xib */,
+				550610DE20EAA18600D0B49C /* DetaildTableViewCell.swift */,
+				550610DF20EAA18600D0B49C /* DetaildTableViewCell.xib */,
+				55404BD920EB45ED0071AD9D /* ListViewTableViewCell.swift */,
+				55404BDA20EB45ED0071AD9D /* ListViewTableViewCell.xib */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
+		550E81FE20EA245B00C6E137 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				550E81FF20EA247D00C6E137 /* BigCollectionViewCell.swift */,
+				550E820020EA247D00C6E137 /* BigCollectionViewCell.xib */,
+				55404BDD20EB73240071AD9D /* SmallCollectionViewCell.swift */,
+				55404BDE20EB73240071AD9D /* SmallCollectionViewCell.xib */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		552EB7B220E899F800BB6B90 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				552EB7B320E89A0200BB6B90 /* API */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		552EB7B320E89A0200BB6B90 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				552EB7B420E89A0D00BB6B90 /* ConstantsAPI.swift */,
+				552EB7B820E89A8E00BB6B90 /* HelloOmanError.swift */,
+				552EB7B520E89A0D00BB6B90 /* HelloOmanAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		55404BE120EB76110071AD9D /* Save */ = {
+			isa = PBXGroup;
+			children = (
+				55404BE220EB763D0071AD9D /* FavouritesViewController.swift */,
+				55404BE420EB7D0B0071AD9D /* SavePackagesViewController.swift */,
+				55404BE620EB7D210071AD9D /* SavedTravelIdeasViewController.swift */,
+			);
+			path = Save;
+			sourceTree = "<group>";
+		};
+		55404BE820EB9E260071AD9D /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				55F5CB6B20ED241300265B52 /* FakeLaunchScreenVC.swift */,
+				55404BE920EB9E3F0071AD9D /* ChangePwViewController.swift */,
+				55404BEB20EBD7B20071AD9D /* MyAccountViewController.swift */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		55A4F5D720E64208008C843C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				55A4F5DF20E6440B008C843C /* Roboto-Black.ttf */,
+				55A4F5DA20E6440A008C843C /* Roboto-BlackItalic.ttf */,
+				55A4F5DC20E6440B008C843C /* Roboto-Bold.ttf */,
+				55A4F5DB20E6440A008C843C /* Roboto-BoldItalic.ttf */,
+				55A4F5E020E6440B008C843C /* Roboto-Italic.ttf */,
+				55A4F5E220E6440B008C843C /* Roboto-Light.ttf */,
+				55A4F5D820E6440A008C843C /* Roboto-LightItalic.ttf */,
+				55A4F5DE20E6440B008C843C /* Roboto-Medium.ttf */,
+				55A4F5D920E6440A008C843C /* Roboto-MediumItalic.ttf */,
+				55A4F5E320E6440B008C843C /* Roboto-Regular.ttf */,
+				55A4F5DD20E6440B008C843C /* Roboto-Thin.ttf */,
+				55A4F5E120E6440B008C843C /* Roboto-ThinItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		55F5AEC720DF653A0076CC0F = {
+			isa = PBXGroup;
+			children = (
+				55F5AED220DF653A0076CC0F /* Hello Oman */,
+				55F5AED120DF653A0076CC0F /* Products */,
+				4A7585DD32D3FA6E4FA9F68F /* Pods */,
+				1E4E5EE5E6B79ADBFBDB3D90 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		55F5AED120DF653A0076CC0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55F5AED020DF653A0076CC0F /* Hello Oman.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		55F5AED220DF653A0076CC0F /* Hello Oman */ = {
+			isa = PBXGroup;
+			children = (
+				55F5AED320DF653A0076CC0F /* AppDelegate.swift */,
+				552EB7BE20E8AD6100BB6B90 /* GoogleService-Info.plist */,
+				55F5AEEB20DF65C60076CC0F /* Storyboards */,
+				55F5AEEA20DF65AF0076CC0F /* ViewControllers */,
+				55F5AEE920DF65A80076CC0F /* Views */,
+				55F5AEE820DF659D0076CC0F /* Extensions */,
+				552EB7B220E899F800BB6B90 /* Services */,
+				55F5AEE720DF65970076CC0F /* Models */,
+				55F5AEE620DF65890076CC0F /* Resources */,
+				55F5AEE520DF656D0076CC0F /* Frameworks */,
+			);
+			path = "Hello Oman";
+			sourceTree = "<group>";
+		};
+		55F5AEE520DF656D0076CC0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		55F5AEE620DF65890076CC0F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				55A4F5D720E64208008C843C /* Fonts */,
+				55F5AF1020E00F700076CC0F /* Libraries */,
+				55F5AF0920E00F670076CC0F /* KeyboardScrollVew */,
+				55F5AEDF20DF653C0076CC0F /* Info.plist */,
+				55F5AF1720E00FBE0076CC0F /* Hello Oman-Bridging-Header.h */,
+				55F5AEDA20DF653C0076CC0F /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		55F5AEE720DF65970076CC0F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				556072A120E8E78E00CAC359 /* User.swift */,
+				556072A020E8E78E00CAC359 /* User+Serializable.swift */,
+				556072A420E8E84900CAC359 /* AgentInfo.swift */,
+				552EB7BB20E89E0600BB6B90 /* CurrentUser.swift */,
+				552EB7BA20E89E0600BB6B90 /* CurrentUser+Manager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		55F5AEE820DF659D0076CC0F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				552EB7C020E8C0C700BB6B90 /* MBProgressHUD+HelloOmanHelper.swift */,
+				552EB7C220E8C1F800BB6B90 /* UIViewController+HelloOmanHelper.swift */,
+				55F5AF0420E0083C0076CC0F /* UIColor+Hello Oman.swift */,
+				55F5AF0720E009A30076CC0F /* UIFont+Hello Oman.swift */,
+				55F5AEEF20DFACC90076CC0F /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		55F5AEE920DF65A80076CC0F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				550610DA20EA94E000D0B49C /* HomeSectionHeaderCReusableView.swift */,
+				550610DB20EA94E000D0B49C /* HomeSectionHeaderCReusableView.xib */,
+				550E81FE20EA245B00C6E137 /* CollectionViewCells */,
+				550E81F920EA208200C6E137 /* TableCells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		55F5AEEA20DF65AF0076CC0F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				55404BE820EB9E260071AD9D /* Others */,
+				55404BE120EB76110071AD9D /* Save */,
+				55F5AEFC20DFFCE50076CC0F /* Home */,
+				55F5AEFB20DFFCAF0076CC0F /* SignInUp */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		55F5AEEB20DF65C60076CC0F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				55F5AED720DF653A0076CC0F /* Main.storyboard */,
+				55F5AEDC20DF653C0076CC0F /* LaunchScreen.storyboard */,
+				55F5AEF120DFBC160076CC0F /* Home.storyboard */,
+				55F5CB6920ED23D200265B52 /* FakeLaunch.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		55F5AEFB20DFFCAF0076CC0F /* SignInUp */ = {
+			isa = PBXGroup;
+			children = (
+				55F5AEF520DFFC750076CC0F /* SignInViewController.swift */,
+				55F5AEF720DFFC8A0076CC0F /* SignUpViewController.swift */,
+				55F5AEF920DFFCA40076CC0F /* ForgotPswViewController.swift */,
+			);
+			path = SignInUp;
+			sourceTree = "<group>";
+		};
+		55F5AEFC20DFFCE50076CC0F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				55F5AEF320DFFC490076CC0F /* LandingViewController.swift */,
+				55F5AEFD20DFFEC70076CC0F /* HomeViewController.swift */,
+				55F5AEFF20DFFEF50076CC0F /* PackagesViewController.swift */,
+				55F5AF0120DFFF040076CC0F /* TravelPlansViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		55F5AF0920E00F670076CC0F /* KeyboardScrollVew */ = {
+			isa = PBXGroup;
+			children = (
+				55F5AF0A20E00F670076CC0F /* TPKeyboardAvoidingScrollView.h */,
+				55F5AF0B20E00F670076CC0F /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+				55F5AF0C20E00F670076CC0F /* TPKeyboardAvoidingScrollView.m */,
+				55F5AF0D20E00F670076CC0F /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+			);
+			path = KeyboardScrollVew;
+			sourceTree = "<group>";
+		};
+		55F5AF1020E00F700076CC0F /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				556A0A7620E0BC64002E3FFF /* LeftMenuTVC.swift */,
+				556A0A7720E0BC64002E3FFF /* LeftMenuTVCell.swift */,
+				55F5AF1120E00F700076CC0F /* SlideMenuController.swift */,
+				55B0CBCE20ECF6A3006B7E5A /* CAPSPageMenu.swift */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		55F5AECF20DF653A0076CC0F /* Hello Oman */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55F5AEE220DF653C0076CC0F /* Build configuration list for PBXNativeTarget "Hello Oman" */;
+			buildPhases = (
+				1F4B6BC2BCFD12D769D42626 /* [CP] Check Pods Manifest.lock */,
+				55F5AECC20DF653A0076CC0F /* Sources */,
+				55F5AECD20DF653A0076CC0F /* Frameworks */,
+				55F5AECE20DF653A0076CC0F /* Resources */,
+				38B797BF9BCEEEEE1881EC85 /* [CP] Embed Pods Frameworks */,
+				6EF44C9CAE65F163EA3F5524 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hello Oman";
+			productName = "Hello Oman";
+			productReference = 55F5AED020DF653A0076CC0F /* Hello Oman.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		55F5AEC820DF653A0076CC0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = Self;
+				TargetAttributes = {
+					55F5AECF20DF653A0076CC0F = {
+						CreatedOnToolsVersion = 9.4;
+					};
+				};
+			};
+			buildConfigurationList = 55F5AECB20DF653A0076CC0F /* Build configuration list for PBXProject "Hello Oman" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 55F5AEC720DF653A0076CC0F;
+			productRefGroup = 55F5AED120DF653A0076CC0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				55F5AECF20DF653A0076CC0F /* Hello Oman */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		55F5AECE20DF653A0076CC0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55F5AEDE20DF653C0076CC0F /* LaunchScreen.storyboard in Resources */,
+				55404BE020EB73240071AD9D /* SmallCollectionViewCell.xib in Resources */,
+				55F5AEDB20DF653C0076CC0F /* Assets.xcassets in Resources */,
+				55A4F5EF20E6440B008C843C /* Roboto-Regular.ttf in Resources */,
+				55A4F5EE20E6440B008C843C /* Roboto-Light.ttf in Resources */,
+				550E820220EA247D00C6E137 /* BigCollectionViewCell.xib in Resources */,
+				55F5CB6A20ED23D200265B52 /* FakeLaunch.storyboard in Resources */,
+				55A4F5E720E6440B008C843C /* Roboto-BoldItalic.ttf in Resources */,
+				55A4F5E420E6440B008C843C /* Roboto-LightItalic.ttf in Resources */,
+				55A4F5E620E6440B008C843C /* Roboto-BlackItalic.ttf in Resources */,
+				55A4F5EC20E6440B008C843C /* Roboto-Italic.ttf in Resources */,
+				55A4F5E820E6440B008C843C /* Roboto-Bold.ttf in Resources */,
+				550610DD20EA94E000D0B49C /* HomeSectionHeaderCReusableView.xib in Resources */,
+				55F5AED920DF653A0076CC0F /* Main.storyboard in Resources */,
+				550E81FD20EA232400C6E137 /* CollectionViewTableViewCell.xib in Resources */,
+				55A4F5E520E6440B008C843C /* Roboto-MediumItalic.ttf in Resources */,
+				55A4F5EA20E6440B008C843C /* Roboto-Medium.ttf in Resources */,
+				552EB7BF20E8AD6100BB6B90 /* GoogleService-Info.plist in Resources */,
+				55A4F5ED20E6440B008C843C /* Roboto-ThinItalic.ttf in Resources */,
+				55A4F5E920E6440B008C843C /* Roboto-Thin.ttf in Resources */,
+				55404BDC20EB45ED0071AD9D /* ListViewTableViewCell.xib in Resources */,
+				55F5AEF220DFBC160076CC0F /* Home.storyboard in Resources */,
+				55A4F5EB20E6440B008C843C /* Roboto-Black.ttf in Resources */,
+				550610E120EAA18600D0B49C /* DetaildTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F4B6BC2BCFD12D769D42626 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hello Oman-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		38B797BF9BCEEEEE1881EC85 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Hello Oman/Pods-Hello Oman-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hello Oman/Pods-Hello Oman-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6EF44C9CAE65F163EA3F5524 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Hello Oman/Pods-Hello Oman-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hello Oman/Pods-Hello Oman-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		55F5AECC20DF653A0076CC0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55404BE320EB763D0071AD9D /* FavouritesViewController.swift in Sources */,
+				556072A320E8E78E00CAC359 /* User.swift in Sources */,
+				55404BEC20EBD7B20071AD9D /* MyAccountViewController.swift in Sources */,
+				55F5AF0F20E00F670076CC0F /* TPKeyboardAvoidingScrollView.m in Sources */,
+				556A0A7920E0BC64002E3FFF /* LeftMenuTVCell.swift in Sources */,
+				552EB7C120E8C0C800BB6B90 /* MBProgressHUD+HelloOmanHelper.swift in Sources */,
+				552EB7BD20E89E0600BB6B90 /* CurrentUser.swift in Sources */,
+				55F5AF0820E009A30076CC0F /* UIFont+Hello Oman.swift in Sources */,
+				55F5AF0E20E00F670076CC0F /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				55F5AEF620DFFC750076CC0F /* SignInViewController.swift in Sources */,
+				552EB7C320E8C1F800BB6B90 /* UIViewController+HelloOmanHelper.swift in Sources */,
+				550E81FC20EA232400C6E137 /* CollectionViewTableViewCell.swift in Sources */,
+				55F5CB6C20ED241300265B52 /* FakeLaunchScreenVC.swift in Sources */,
+				552EB7BC20E89E0600BB6B90 /* CurrentUser+Manager.swift in Sources */,
+				55404BE720EB7D210071AD9D /* SavedTravelIdeasViewController.swift in Sources */,
+				552EB7B620E89A0D00BB6B90 /* ConstantsAPI.swift in Sources */,
+				55F5AF0220DFFF040076CC0F /* TravelPlansViewController.swift in Sources */,
+				55F5AEF020DFACC90076CC0F /* UIView+Extensions.swift in Sources */,
+				55F5AEF420DFFC490076CC0F /* LandingViewController.swift in Sources */,
+				55404BDB20EB45ED0071AD9D /* ListViewTableViewCell.swift in Sources */,
+				55404BE520EB7D0B0071AD9D /* SavePackagesViewController.swift in Sources */,
+				550E820120EA247D00C6E137 /* BigCollectionViewCell.swift in Sources */,
+				550610E020EAA18600D0B49C /* DetaildTableViewCell.swift in Sources */,
+				552EB7B720E89A0D00BB6B90 /* HelloOmanAPI.swift in Sources */,
+				55F5AED420DF653A0076CC0F /* AppDelegate.swift in Sources */,
+				556A0A7820E0BC64002E3FFF /* LeftMenuTVC.swift in Sources */,
+				55F5AF1320E00F710076CC0F /* SlideMenuController.swift in Sources */,
+				55B0CBCF20ECF6A3006B7E5A /* CAPSPageMenu.swift in Sources */,
+				55F5AEFA20DFFCA40076CC0F /* ForgotPswViewController.swift in Sources */,
+				556072A520E8E84A00CAC359 /* AgentInfo.swift in Sources */,
+				55F5AF0520E0083C0076CC0F /* UIColor+Hello Oman.swift in Sources */,
+				552EB7B920E89A8E00BB6B90 /* HelloOmanError.swift in Sources */,
+				55F5AF0020DFFEF50076CC0F /* PackagesViewController.swift in Sources */,
+				550610DC20EA94E000D0B49C /* HomeSectionHeaderCReusableView.swift in Sources */,
+				55404BDF20EB73240071AD9D /* SmallCollectionViewCell.swift in Sources */,
+				55F5AEFE20DFFEC70076CC0F /* HomeViewController.swift in Sources */,
+				556072A220E8E78E00CAC359 /* User+Serializable.swift in Sources */,
+				55404BEA20EB9E3F0071AD9D /* ChangePwViewController.swift in Sources */,
+				55F5AEF820DFFC8A0076CC0F /* SignUpViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		55F5AED720DF653A0076CC0F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55F5AED820DF653A0076CC0F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		55F5AEDC20DF653C0076CC0F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55F5AEDD20DF653C0076CC0F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		55F5AEE020DF653C0076CC0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Raitha Alsulaimani (787NX5GD2B)";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = CU8MWCVTZH;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "d5f55efe-8d95-42a2-89c5-e1b08f156ab1";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		55F5AEE120DF653C0076CC0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Raitha Alsulaimani (CU8MWCVTZH)";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = CU8MWCVTZH;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "2b1eb604-f625-4b6c-8514-dd0f114c3f15";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		55F5AEE320DF653C0076CC0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68338F650E49C2729B121343 /* Pods-Hello Oman.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Raitha Alsulaimani (787NX5GD2B)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = CU8MWCVTZH;
+				INFOPLIST_FILE = "Hello Oman/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.HelloOman.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d5f55efe-8d95-42a2-89c5-e1b08f156ab1";
+				PROVISIONING_PROFILE_SPECIFIER = HelloOman_Dev;
+				SWIFT_OBJC_BRIDGING_HEADER = "Hello Oman/Resources/Hello Oman-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		55F5AEE420DF653C0076CC0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27DFBFFEB1A4C2CB2B6574D7 /* Pods-Hello Oman.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Raitha Alsulaimani (CU8MWCVTZH)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = CU8MWCVTZH;
+				INFOPLIST_FILE = "Hello Oman/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.HelloOman.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2b1eb604-f625-4b6c-8514-dd0f114c3f15";
+				PROVISIONING_PROFILE_SPECIFIER = HelloOman.AppStore;
+				SWIFT_OBJC_BRIDGING_HEADER = "Hello Oman/Resources/Hello Oman-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		55F5AECB20DF653A0076CC0F /* Build configuration list for PBXProject "Hello Oman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55F5AEE020DF653C0076CC0F /* Debug */,
+				55F5AEE120DF653C0076CC0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55F5AEE220DF653C0076CC0F /* Build configuration list for PBXNativeTarget "Hello Oman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55F5AEE320DF653C0076CC0F /* Debug */,
+				55F5AEE420DF653C0076CC0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 55F5AEC820DF653A0076CC0F /* Project object */;
+}

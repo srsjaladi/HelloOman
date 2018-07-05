@@ -1,0 +1,6 @@
+framework module Pods_Hello_Oman {
+  umbrella header "Pods-Hello Oman-umbrella.h"
+
+  export *
+  module * { export * }
+}
