@@ -1015,5 +1015,52 @@ class HelloOmanAPI {
             
         }
     }
+    
+    
+    func getBrandImageDetails(
+        _
+        handler: @escaping (_ responseList: [ImageBannerModel]?, _ error: HelloOmanError?) -> Void
+        )
+    {
+        
+        self.alamoFireManager.request(baseUrl+getbrandImages, method: .post, parameters:nil).responseJSON { response in
+            
+            let success = self.validateResponseSuccess(response)
+            
+            if (success)
+            {
+                var allImageList = [ImageBannerModel]()
+                let object = response.result.value
+                let arrCategory = JSON(object!).arrayValue
+                for item in arrCategory
+                {
+                    let Image = ImageBannerModel(object:item.object as AnyObject)
+                    allImageList.append(Image)
+                }
+                
+                handler(allImageList,nil)
+            }
+            else
+            {
+                if let value = response.result.value, let error = HelloOmanError(object: value as AnyObject)
+                {
+                    handler(nil, error)
+                }
+                else if let errorCode = response.response?.statusCode, errorCode == ErrorCode.noInternet.rawValue
+                {
+                    let error = HelloOmanError(errorCode: ErrorCode.noInternet)
+                    handler(nil, error)
+                    
+                } else {
+                    let error = HelloOmanError()
+                    error.detail = "Themes Details server error"
+                    handler(nil, error)
+                }
+            }
+            
+        }
+    }
+    
+    
 }
 

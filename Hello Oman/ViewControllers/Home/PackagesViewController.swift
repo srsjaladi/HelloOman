@@ -108,6 +108,7 @@ class PackagesViewController: UIViewController, UITableViewDelegate, UITableView
         cell.lblTimeDays.text = String(format:"\(num!) Days/\(num! - 1) Nights")
         let value = String(format: "OMR \((modelObj?.packagePrice)!)/head")
         cell.lblOMR.text = value
+        cell.btnCall.addTarget(self, action: #selector(PackagesViewController.btnCallClicked(sender:)), for: .touchUpInside)
         cell.btnPlan.tag = indexPath.row + 1
          cell.btnPlan.addTarget(self, action: #selector(PackagesViewController.btnForPlanClicked(sender:)), for: .touchUpInside)
         if(indexPath.row == ((self.packgesDetails!.packagesModelList.count) - 1))
@@ -125,7 +126,7 @@ class PackagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     @objc func btnCallClicked(sender: AnyObject) {
         
-       
+        self.containerLandingVC?.callingAgentNum()
     }
     
     @objc func btnForPlanClicked(sender: AnyObject) {

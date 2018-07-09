@@ -10,6 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import GoogleSignIn
 import GoogleMobileAds
+import GooglePlaces
 
 
 
@@ -30,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = YOUR_CLIENT_ID
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         GADMobileAds.configure(withApplicationID: "YOUR_ADMOB_APP_ID")
-
+        GMSPlacesClient.provideAPIKey("AIzaSyC3-ksmrjduuSNso-Z9wOCSeXvQACcV1jU")
         CurrentUser.sharedInstance.load()
         
         return true

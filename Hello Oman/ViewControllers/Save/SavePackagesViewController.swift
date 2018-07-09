@@ -102,12 +102,36 @@ class SavePackagesViewController: UIViewController , UITableViewDelegate, UITabl
         cell.lblTimeDays.text = String(format:"\(num!) Days/\(num! - 1) Nights")
         let value = String(format: "OMR \((modelObj?.packagePrice)!)/head")
         cell.lblOMR.text = value
+        cell.btnCall.addTarget(self, action: #selector(MorePackagesViewController.btnCallClicked(sender:)), for: .touchUpInside)
+        cell.btnPlan.tag = indexPath.row + 1
+        cell.btnPlan.addTarget(self, action: #selector(MorePackagesViewController.btnForPlanClicked(sender:)), for: .touchUpInside)
         
         return cell
         
         
     }
     
+    @objc func btnCallClicked(sender: AnyObject) {
+        
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let agentDetailsVC = homeStoryboard.instantiateViewController(withIdentifier: "CallToAgentViewController") as! CallToAgentViewController
+        self.present(agentDetailsVC, animated: false, completion: nil)
+    }
+    
+    @objc func btnForPlanClicked(sender: AnyObject) {
+        //RequestPlanViewController
+        let modelObj = self.packgesDetails?.packagesModelList[(sender.tag - 1)]
+        let imageObj = modelObj?.arrPackageImages[0]
+        
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let requestPlanVC: RequestPlanViewController = storyboard.instantiateViewController(withIdentifier: "RequestPlanViewController") as! RequestPlanViewController
+        requestPlanVC.strImage = (modelObj?.packageTitle)!
+        requestPlanVC.strSubject = (imageObj?.image_URL)!
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(requestPlanVC, animated: true)
+        
+    }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

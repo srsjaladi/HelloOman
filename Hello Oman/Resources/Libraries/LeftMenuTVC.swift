@@ -8,6 +8,8 @@
 
 import UIKit
 import AlamofireImage
+import MessageUI
+
 
 private enum MenuOption: String {
     case Home = "Home"
@@ -22,7 +24,7 @@ private enum MenuOption: String {
     case Account = "Account"
 }
 
-class LeftMenuTVC: UITableViewController {
+class LeftMenuTVC: UITableViewController,MFMailComposeViewControllerDelegate {
 	
 	fileprivate var rowsList = [[MenuOption]]()
     
@@ -171,6 +173,20 @@ class LeftMenuTVC: UITableViewController {
             let navigationController = UINavigationController(rootViewController: self.changeVC)
             self.slideMenuController()?.changeMainViewController(navigationController, close: true)
             break
+        case .ContactUs:
+            self.closeLeft()
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self as MFMailComposeViewControllerDelegate
+                mail.setToRecipients([""])
+                mail.setMessageBody("<p>Please write...!</p>", isHTML: true)
+                
+                present(mail, animated: true)
+            } else {
+                // show failure alert
+            }
+           
+            break
         case .Logout:
             CurrentUser.sharedInstance.logOut()
             break
@@ -179,6 +195,9 @@ class LeftMenuTVC: UITableViewController {
         }
     }
 	
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
  	
     override func numberOfSections(in tableView: UITableView) -> Int {
         

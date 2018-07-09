@@ -16,6 +16,8 @@ target 'Hello Oman' do
     pod 'GoogleSignIn'
     pod 'Google-Mobile-Ads-SDK'
     pod "MWPhotoBrowser"
+    pod 'GooglePlaces'
+    pod 'GooglePlacePicker'
 
 
 end

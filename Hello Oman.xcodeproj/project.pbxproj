@@ -42,6 +42,7 @@
 		5589B4DE20F3517A0005E183 /* PackagesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5589B4DD20F3517A0005E183 /* PackagesHeaderView.xib */; };
 		5589B4E020F351920005E183 /* TravelItemsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5589B4DF20F351920005E183 /* TravelItemsHeaderView.xib */; };
 		5589B4E220F351A40005E183 /* TravelItemsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5589B4E120F351A40005E183 /* TravelItemsHeaderView.swift */; };
+		559E177120F384C100C3079A /* CallToAgentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559E177020F384C100C3079A /* CallToAgentViewController.swift */; };
 		55A4F5E420E6440B008C843C /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5D820E6440A008C843C /* Roboto-LightItalic.ttf */; };
 		55A4F5E520E6440B008C843C /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5D920E6440A008C843C /* Roboto-MediumItalic.ttf */; };
 		55A4F5E620E6440B008C843C /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A4F5DA20E6440A008C843C /* Roboto-BlackItalic.ttf */; };
@@ -57,6 +58,11 @@
 		55B0CBCF20ECF6A3006B7E5A /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0CBCE20ECF6A3006B7E5A /* CAPSPageMenu.swift */; };
 		55BCA53920F124ED00611A71 /* MorePackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCA53820F124ED00611A71 /* MorePackagesViewController.swift */; };
 		55BCA53B20F1257B00611A71 /* MoreTravelIdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCA53A20F1257B00611A71 /* MoreTravelIdeasViewController.swift */; };
+		55CBD4BB20F3B638002517BB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CBD4BA20F3B638002517BB /* MessageUI.framework */; };
+		55CBD4C020F3B669002517BB /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CBD4BC20F3B669002517BB /* CoreFoundation.framework */; };
+		55CBD4C120F3B669002517BB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CBD4BD20F3B669002517BB /* CoreGraphics.framework */; };
+		55CBD4C220F3B669002517BB /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CBD4BE20F3B669002517BB /* AVKit.framework */; };
+		55CBD4C320F3B669002517BB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CBD4BF20F3B669002517BB /* AVFoundation.framework */; };
 		55D3BC2120EE86A200A0E92A /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3BC2020EE86A200A0E92A /* HomeModel.swift */; };
 		55D955C320F0BC60003071DF /* AQPhotoPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55D955C020F0BC5F003071DF /* AQPhotoPickerView.xib */; };
 		55D955C420F0BC60003071DF /* AQPhotoPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D955C220F0BC5F003071DF /* AQPhotoPickerView.m */; };
@@ -145,6 +151,7 @@
 		5589B4DD20F3517A0005E183 /* PackagesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackagesHeaderView.xib; sourceTree = "<group>"; };
 		5589B4DF20F351920005E183 /* TravelItemsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelItemsHeaderView.xib; sourceTree = "<group>"; };
 		5589B4E120F351A40005E183 /* TravelItemsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelItemsHeaderView.swift; sourceTree = "<group>"; };
+		559E177020F384C100C3079A /* CallToAgentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallToAgentViewController.swift; sourceTree = "<group>"; };
 		55A4F5D820E6440A008C843C /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		55A4F5D920E6440A008C843C /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
 		55A4F5DA20E6440A008C843C /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -160,6 +167,11 @@
 		55B0CBCE20ECF6A3006B7E5A /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		55BCA53820F124ED00611A71 /* MorePackagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorePackagesViewController.swift; sourceTree = "<group>"; };
 		55BCA53A20F1257B00611A71 /* MoreTravelIdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTravelIdeasViewController.swift; sourceTree = "<group>"; };
+		55CBD4BA20F3B638002517BB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		55CBD4BC20F3B669002517BB /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		55CBD4BD20F3B669002517BB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		55CBD4BE20F3B669002517BB /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		55CBD4BF20F3B669002517BB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		55D3BC2020EE86A200A0E92A /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		55D955C020F0BC5F003071DF /* AQPhotoPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AQPhotoPickerView.xib; sourceTree = "<group>"; };
 		55D955C120F0BC5F003071DF /* AQPhotoPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQPhotoPickerView.h; sourceTree = "<group>"; };
@@ -223,6 +235,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55CBD4C020F3B669002517BB /* CoreFoundation.framework in Frameworks */,
+				55CBD4C120F3B669002517BB /* CoreGraphics.framework in Frameworks */,
+				55CBD4C220F3B669002517BB /* AVKit.framework in Frameworks */,
+				55CBD4C320F3B669002517BB /* AVFoundation.framework in Frameworks */,
+				55CBD4BB20F3B638002517BB /* MessageUI.framework in Frameworks */,
 				9003D6DF542A61B5CE17111E /* Pods_Hello_Oman.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +250,11 @@
 		1E4E5EE5E6B79ADBFBDB3D90 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55CBD4BF20F3B669002517BB /* AVFoundation.framework */,
+				55CBD4BE20F3B669002517BB /* AVKit.framework */,
+				55CBD4BC20F3B669002517BB /* CoreFoundation.framework */,
+				55CBD4BD20F3B669002517BB /* CoreGraphics.framework */,
+				55CBD4BA20F3B638002517BB /* MessageUI.framework */,
 				E4C0609E585687D25D572CC0 /* Pods_Hello_Oman.framework */,
 			);
 			name = Frameworks;
@@ -319,6 +341,7 @@
 				5540F6C220EF6F4D00AACB08 /* RequestPlanViewController.swift */,
 				55F10C5020F0E1C7006DCB87 /* AgentDetailsViewController.swift */,
 				55E4B3AE20F29CD4007A8B6D /* ItineraryViewController.swift */,
+				559E177020F384C100C3079A /* CallToAgentViewController.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -712,10 +735,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Hello Oman/Pods-Hello Oman-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -749,6 +778,7 @@
 				55F876A620EFEB0B0075167E /* ImageModel.swift in Sources */,
 				55E4B39020F1D4A4007A8B6D /* TravelIdeasDetailsViewController.swift in Sources */,
 				55F876A220EFD82C0075167E /* PickerTextField.swift in Sources */,
+				559E177120F384C100C3079A /* CallToAgentViewController.swift in Sources */,
 				55F876A820EFF1390075167E /* PackagesModelList.swift in Sources */,
 				550E81FC20EA232400C6E137 /* CollectionViewTableViewCell.swift in Sources */,
 				55E4B3A020F207F7007A8B6D /* DetailedTravelItemsModel.swift in Sources */,

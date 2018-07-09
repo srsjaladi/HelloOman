@@ -564,6 +564,18 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Copyright 2018 Google
 
+## GoogleMaps
+
+Copyright 2018 Google
+
+## GooglePlacePicker
+
+Copyright 2018 Google
+
+## GooglePlaces
+
+Copyright 2018 Google
+
 ## GoogleSignIn
 
 Copyright 2018 Google

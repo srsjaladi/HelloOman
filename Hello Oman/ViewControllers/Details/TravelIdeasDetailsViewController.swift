@@ -19,20 +19,18 @@ class TravelIdeasDetailsViewController: UIViewController,UITableViewDelegate, UI
     var travelItems : TravelIdeasModel?
     var innerTravelItemsList = [DetailedTravelItemsModel]()
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         HeaderVIew = (Bundle.main.loadNibNamed("TravelItemsHeaderView", owner: self, options: nil)![0] as? TravelItemsHeaderView)
        
-        bannerView.adUnitID = "ca-app-pub-7864413541660030/3123173782"
-        bannerView.rootViewController = self
-        bannerView.delegate = self
+        HeaderVIew.bannerView.adUnitID = "ca-app-pub-7864413541660030/3123173782"
+        HeaderVIew.bannerView.rootViewController = self
+        HeaderVIew.bannerView.delegate = self
         let request: GADRequest = GADRequest()
         request.testDevices = [kGADSimulatorID]
-        bannerView.load(request)
+        HeaderVIew.bannerView.load(request)
         
         self.automaticallyAdjustsScrollViewInsets = true
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Roboto-Regular", size: 17)!]
@@ -153,6 +151,31 @@ class TravelIdeasDetailsViewController: UIViewController,UITableViewDelegate, UI
     
     @IBAction func btnShareClicked(_ sender: Any) {
         
+        if let imageURL = NSURL(string: (travelItems?.travelImageUrl)!) {
+            let request: NSURLRequest = NSURLRequest(url: imageURL as URL)
+            
+            let session = URLSession.shared
+            
+            let task = session.dataTask(with: request as URLRequest) { (data,response,error) in
+                // Handler
+                if (error == nil && data != nil)
+                {
+                    func getImage() -> UIImage
+                    {
+                        return UIImage(data: data!)!
+                    }
+                    
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        let image = getImage()
+                        
+                        let shareVC: UIActivityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+                        self.present(shareVC, animated: true, completion: nil)
+                    })
+                }
+            }
+            
+            task.resume()
+        }
     }
     
     @IBAction func btnSaveClicked(_ sender: Any) {

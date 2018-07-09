@@ -135,3 +135,22 @@ struct ThemeModel
     }
 }
 
+struct ImageBannerModel
+{
+    var id = ""
+    var image = ""
+    
+    init() {
+        
+    }
+    
+    init(object:AnyObject) {
+        
+        let json = JSON(object)
+        
+        self.id = json["id"].stringValue
+        self.image = json["image"].stringValue
+        
+    }
+}
+

@@ -20,35 +20,25 @@ private let kTagCollectionView = 1900
 class DetailsPackagesViewController: UIViewController,UITableViewDelegate, UITableViewDataSource,GADBannerViewDelegate,MWPhotoBrowserDelegate{
     
  
-@IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint?
-    @IBOutlet weak var btnSightSeeing: UIButton!
+
+    @IBOutlet weak var headerView: PackagesHeaderView!
     @IBOutlet weak var tblView: UITableView!
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var btnShare: UIButton!
-    @IBOutlet weak var btnSave: UIButton!
-    @IBOutlet weak var imgLocation: UIImageView!
-    @IBOutlet weak var lblDetailLocation: UILabel!
-    @IBOutlet weak var btnPlan: UIButton!
-    @IBOutlet weak var btnTrain: UIButton!
-    @IBOutlet weak var btnFood: UIButton!
-    @IBOutlet weak var btnCar: UIButton!
-    @IBOutlet weak var bannerView: GADBannerView!
-    @IBOutlet weak var lblOMR: UILabel!
-    @IBOutlet weak var lblDaysNights: UILabel!
+ 
     var packgesDetails : PackagesModel?
     var arrItineraryList = [ItineraryModel]()
     var photos = [MWPhoto]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bannerView.adUnitID = "ca-app-pub-7864413541660030/3123173782"
-        bannerView.rootViewController = self
-        bannerView.delegate = self
+        
+        headerView = (Bundle.main.loadNibNamed("PackagesHeaderView", owner: self, options: nil)![0] as? PackagesHeaderView)
+        
+       headerView.bannerView.adUnitID = "ca-app-pub-7864413541660030/3123173782"
+        headerView.bannerView.rootViewController = self
+        headerView.bannerView.delegate = self
         let request: GADRequest = GADRequest()
         request.testDevices = [kGADSimulatorID]
-        bannerView.load(request)
+        headerView.bannerView.load(request)
        // bannerView.load(GADRequest())
         self.title = packgesDetails?.packageTitle
         self.automaticallyAdjustsScrollViewInsets = true
@@ -63,27 +53,25 @@ class DetailsPackagesViewController: UIViewController,UITableViewDelegate, UITab
           self.tblView.register(UINib(nibName: "\(InclusionsTableViewCell.self)", bundle: nil), forCellReuseIdentifier: kReuseTableCellID)
         
         self.getItineraryDetials(pakcgeId: (self.packgesDetails?.packageId)!)
-       // self.tblView.addSubview(headerView)
-        self.headerView.removeFromSuperview()
         self.tblView.tableHeaderView = self.headerView
-        self.btnCar.isHidden = true
-        self.btnFood.isHidden = true
-        self.btnPlan.isHidden = true
-        self.btnTrain.isHidden = true
-        self.btnSightSeeing.isHidden = true
+        self.headerView.btnCar.isHidden = true
+        self.headerView.btnFood.isHidden = true
+        self.headerView.btnPlan.isHidden = true
+        self.headerView.btnTrain.isHidden = true
+        self.headerView.btnSightSeeing.isHidden = true
         self.UpdateHeader()
-         self.tblView.contentSize.height = (self.tblView.contentSize.height - headerView.frame.size.height)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.warmGrey()]
       
     }
     
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        tableViewHeightConstraint?.constant = self.tblView.contentSize.height
         self.tblView.needsUpdateConstraints()
     }
 
@@ -117,15 +105,13 @@ class DetailsPackagesViewController: UIViewController,UITableViewDelegate, UITab
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-          tableViewHeightConstraint?.constant = self.tblView.contentSize.height
         self.tblView.needsUpdateConstraints()
     }
 
     @IBAction func btnSaveClicked(_ sender: Any) {
         
         var isOption : String = ""
-        if self.btnSave.isSelected {
+        if self.headerView.btnSave.isSelected {
             isOption = "1"
         }
         else
@@ -151,7 +137,7 @@ class DetailsPackagesViewController: UIViewController,UITableViewDelegate, UITab
                 MBProgressHUD.dismissGlobalHUD()
                 if responseCode == "1"
                 {
-                     self.btnSave.isSelected = !self.btnSave.isSelected
+                     self.headerView.btnSave.isSelected = !self.headerView.btnSave.isSelected
                    // self.showAlert("Sucess !!", message: "")
                 }
                 else
@@ -172,14 +158,44 @@ class DetailsPackagesViewController: UIViewController,UITableViewDelegate, UITab
     }
     
     @IBAction func btnShareClicked(_ sender: Any) {
+        
+        if let imageURL = NSURL(string: (packgesDetails?.arrPackageImages[0].image_URL)!) {
+            let request: NSURLRequest = NSURLRequest(url: imageURL as URL)
+            
+            let session = URLSession.shared
+            
+            let task = session.dataTask(with: request as URLRequest) { (data,response,error) in
+                // Handler
+                if (error == nil && data != nil)
+                {
+                    func getImage() -> UIImage
+                    {
+                        return UIImage(data: data!)!
+                    }
+                    
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        let image = getImage()
+                        
+                        let shareVC: UIActivityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+                        self.present(shareVC, animated: true, completion: nil)
+                    })
+                }
+            }
+            
+            task.resume()
+        }
     }
     
     func UpdateHeader()  {
         
+        self.headerView.btnShare.addTarget(self, action: #selector(DetailsPackagesViewController.btnShareClicked(_:)), for: .touchUpInside)
+        
+        self.headerView.btnSave.addTarget(self, action: #selector(DetailsPackagesViewController.btnSaveClicked(_:)), for: .touchUpInside)
+        
         if (packgesDetails?.arrPackageImages.count)! > 0 {
             if let imageURL = URL(string: (packgesDetails?.arrPackageImages[0].image_URL)!)
             {
-                self.imageView.af_setImage(
+                self.headerView.imageView.af_setImage(
                     withURL: imageURL,
                     placeholderImage: UIImage(named: "DefaultImage"),
                     filter: nil,
@@ -189,11 +205,11 @@ class DetailsPackagesViewController: UIViewController,UITableViewDelegate, UITab
         }
         
         if self.packgesDetails?.packageFav == "1" {
-            self.btnSave.isSelected = true
+            self.headerView.btnSave.isSelected = true
         }
         else
         {
-            self.btnSave.isSelected = false
+            self.headerView.btnSave.isSelected = false
         }
        
         let stringType = self.packgesDetails?.packageInclusions
@@ -203,25 +219,25 @@ class DetailsPackagesViewController: UIViewController,UITableViewDelegate, UITab
         {
             switch String(item) {
             case "Food":
-                self.btnFood.isHidden = false
+                self.headerView.btnFood.isHidden = false
                 break
             case " food","food":
-                self.btnFood.isHidden = false
+                self.headerView.btnFood.isHidden = false
                 break
             case "Flight":
-                self.btnPlan.isHidden = false
+                self.headerView.btnPlan.isHidden = false
                 break
             case "Pickup":
-                self.btnCar.isHidden = false
+                self.headerView.btnCar.isHidden = false
                 break
             case "Sightseeing":
-                self.btnSightSeeing.isHidden = false
+                self.headerView.btnSightSeeing.isHidden = false
                 break
             case "Train":
-                self.btnTrain.isHidden = false
+                self.headerView.btnTrain.isHidden = false
                 break
             case " Train":
-                self.btnTrain.isHidden = false
+                self.headerView.btnTrain.isHidden = false
                 break
             default:
                 break
@@ -245,11 +261,11 @@ class DetailsPackagesViewController: UIViewController,UITableViewDelegate, UITab
                 strCity = strCity + " -> " + item
             }
         }
-        self.lblTitle.text = self.packgesDetails?.packageTitle
+        self.headerView.lblTitle.text = self.packgesDetails?.packageTitle
         let numDuration = Int((self.packgesDetails?.packageDuration)!)
-        self.lblOMR.text = String(format: "OMR \(self.packgesDetails!.packagePrice)/head")
-        self.lblDaysNights.text = String(format: "\(numDuration!) days/\(numDuration! - 1) Nights")
-        self.lblDetailLocation.text = strCity
+        self.headerView.lblOMR.text = String(format: "OMR \(self.packgesDetails!.packagePrice)/head")
+        self.headerView.lblDaysNights.text = String(format: "\(numDuration!) days/\(numDuration! - 1) Nights")
+        self.headerView.lblDetailLocation.text = strCity
     }
     
     @IBAction func btnBackClicked(_ sender: Any) {
@@ -408,6 +424,11 @@ class DetailsPackagesViewController: UIViewController,UITableViewDelegate, UITab
     
     
     @IBAction func btnCallClicked(_ sender: Any) {
+        
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let agentDetailsVC = homeStoryboard.instantiateViewController(withIdentifier: "CallToAgentViewController") as! CallToAgentViewController
+        self.present(agentDetailsVC, animated: false, completion: nil)
+
     }
     
     @IBAction func btnPlanClicked(_ sender: Any) {

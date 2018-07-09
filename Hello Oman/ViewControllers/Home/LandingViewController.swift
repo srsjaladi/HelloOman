@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import GooglePlaces
 
 
 class LandingViewController: UIViewController,CAPSPageMenuDelegate,HomeVCDelegate,PackagesVCDelegate,TravelPlansVCDelegate {
@@ -256,6 +257,10 @@ class LandingViewController: UIViewController,CAPSPageMenuDelegate,HomeVCDelegat
     }
     
     @IBAction func btnSearchClicked(_ sender: Any) {
+        
+        let placePickerController = GMSAutocompleteViewController()
+        placePickerController.delegate = self as GMSAutocompleteViewControllerDelegate
+        present(placePickerController, animated: true, completion: nil)
     }
     
     @IBAction func btnFilterClicked(_ sender: Any) {
@@ -336,6 +341,43 @@ class LandingViewController: UIViewController,CAPSPageMenuDelegate,HomeVCDelegat
         
     }
     
+    func callingAgentNum()
+    {
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let agentDetailsVC = homeStoryboard.instantiateViewController(withIdentifier: "CallToAgentViewController") as! CallToAgentViewController
+        self.present(agentDetailsVC, animated: false, completion: nil)
+    }
+    
+    
+}
+
+extension LandingViewController: GMSAutocompleteViewControllerDelegate {
+    
+    // Handle the user's selection.
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        print("Place name: \(place.name)")
+        dismiss(animated: true, completion: nil)
+        self.gotoPackgesViewController(type: "0", search: place.name, title: place.name )
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        // TODO: handle the error.
+        print("Error: ", error.localizedDescription)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
     
 }
 
