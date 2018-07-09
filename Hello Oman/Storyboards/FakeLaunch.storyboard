@@ -21,12 +21,21 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashImg" translatesAutoresizingMaskIntoConstraints="NO" id="8gn-Dd-Led">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppImage" translatesAutoresizingMaskIntoConstraints="NO" id="vsM-lH-oSp">
+                                <rect key="frame" x="146.5" y="70" width="81" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="J3P-JG-jJJ"/>
+                                    <constraint firstAttribute="width" constant="81" id="srC-mQ-xCA"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="8gn-Dd-Led" secondAttribute="trailing" id="4aF-JU-nkD"/>
+                            <constraint firstItem="vsM-lH-oSp" firstAttribute="centerX" secondItem="QOQ-6m-5tD" secondAttribute="centerX" id="83j-lG-G07"/>
                             <constraint firstAttribute="bottom" secondItem="8gn-Dd-Led" secondAttribute="bottom" id="Ex2-yF-wEU"/>
                             <constraint firstItem="8gn-Dd-Led" firstAttribute="leading" secondItem="QOQ-6m-5tD" secondAttribute="leading" id="QAN-xa-QOy"/>
+                            <constraint firstItem="vsM-lH-oSp" firstAttribute="top" secondItem="QOQ-6m-5tD" secondAttribute="top" constant="70" id="aie-N3-UJw"/>
                             <constraint firstItem="8gn-Dd-Led" firstAttribute="top" secondItem="QOQ-6m-5tD" secondAttribute="top" id="idN-i9-bEu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IDX-fV-HEz"/>
@@ -38,6 +47,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AppImage" width="480" height="458"/>
         <image name="SplashImg" width="320" height="561"/>
     </resources>
 </document>

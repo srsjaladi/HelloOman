@@ -94,9 +94,10 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sX8-DI-2Xg">
-                                                <rect key="frame" x="0.0" y="307" width="187.5" height="45"/>
+                                                <rect key="frame" x="26" y="307" width="146" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="Cml-Cq-gA8"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="146" id="Ewf-gw-syj"/>
+                                                    <constraint firstAttribute="height" constant="45" id="t3z-6i-n2u"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                                 <state key="normal" title="Forgot Password?">
@@ -107,11 +108,13 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCg-5A-lhh">
-                                                <rect key="frame" x="8" y="372" width="164" height="45"/>
+                                                <rect key="frame" x="92" y="372" width="80" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Rcb-tu-fK7"/>
+                                                    <constraint firstAttribute="width" constant="80" id="XUO-78-gFQ"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
-                                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="-7" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="FACEBOOK" image="FbIcon">
+                                                <state key="normal" image="FbIcon">
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -130,14 +133,9 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apD-hN-Whw">
-                                                <rect key="frame" x="203" y="372" width="164" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="qKM-TW-cQu"/>
-                                                </constraints>
+                                                <rect key="frame" x="203" y="372" width="80" height="50"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
-                                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="-7" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="GOOGLE" image="GoogleIcon">
+                                                <state key="normal" image="GoogleIcon">
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -156,7 +154,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="do4-6i-ycx">
-                                                <rect key="frame" x="180" y="364" width="15" height="162"/>
+                                                <rect key="frame" x="180" y="301" width="15" height="162"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="15" id="Vif-jF-TKS"/>
@@ -164,7 +162,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIC-gZ-sn1">
-                                                <rect key="frame" x="187.5" y="307" width="187.5" height="45"/>
+                                                <rect key="frame" x="203" y="307" width="146" height="45"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                                 <state key="normal" title="New Here? Sign Up">
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -185,34 +183,34 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="do4-6i-ycx" secondAttribute="bottom" id="1N1-wN-COM"/>
                                             <constraint firstItem="WN5-ap-AMi" firstAttribute="top" secondItem="Qhp-cR-QJ3" secondAttribute="bottom" constant="11" id="9vC-aX-aqs"/>
-                                            <constraint firstItem="pCg-5A-lhh" firstAttribute="leading" secondItem="YCr-B1-YMK" secondAttribute="leading" constant="8" id="CZI-cD-qmY"/>
-                                            <constraint firstItem="LIC-gZ-sn1" firstAttribute="height" secondItem="sX8-DI-2Xg" secondAttribute="height" id="EWn-8d-0se"/>
-                                            <constraint firstItem="sX8-DI-2Xg" firstAttribute="top" secondItem="C3X-Cy-G4J" secondAttribute="bottom" constant="20" id="GKm-M9-FHc"/>
-                                            <constraint firstItem="do4-6i-ycx" firstAttribute="top" secondItem="sX8-DI-2Xg" secondAttribute="bottom" constant="12" id="GSO-MX-8DC"/>
+                                            <constraint firstItem="do4-6i-ycx" firstAttribute="leading" secondItem="pCg-5A-lhh" secondAttribute="trailing" constant="8" id="Ein-Ox-uzY"/>
+                                            <constraint firstItem="apD-hN-Whw" firstAttribute="width" secondItem="pCg-5A-lhh" secondAttribute="width" id="F4p-W7-Qdo"/>
                                             <constraint firstItem="Qhp-cR-QJ3" firstAttribute="centerX" secondItem="YCr-B1-YMK" secondAttribute="centerX" id="IFd-UR-FuI"/>
+                                            <constraint firstItem="LIC-gZ-sn1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="do4-6i-ycx" secondAttribute="trailing" symbolic="YES" id="K3h-yC-l2e"/>
+                                            <constraint firstItem="LIC-gZ-sn1" firstAttribute="height" secondItem="sX8-DI-2Xg" secondAttribute="height" id="LCq-tw-ZF6"/>
                                             <constraint firstItem="C3X-Cy-G4J" firstAttribute="centerX" secondItem="YCr-B1-YMK" secondAttribute="centerX" id="OMt-zs-4D9"/>
-                                            <constraint firstItem="LIC-gZ-sn1" firstAttribute="top" secondItem="C3X-Cy-G4J" secondAttribute="bottom" constant="20" id="Pjk-ac-s9g"/>
-                                            <constraint firstItem="LIC-gZ-sn1" firstAttribute="width" secondItem="sX8-DI-2Xg" secondAttribute="width" id="Pjr-OR-3z3"/>
-                                            <constraint firstAttribute="trailing" secondItem="LIC-gZ-sn1" secondAttribute="trailing" id="SYj-iW-Ut8"/>
                                             <constraint firstItem="3s9-WA-bKx" firstAttribute="top" secondItem="WN5-ap-AMi" secondAttribute="bottom" constant="1" id="SnW-tj-Oos"/>
-                                            <constraint firstItem="pCg-5A-lhh" firstAttribute="top" secondItem="sX8-DI-2Xg" secondAttribute="bottom" constant="20" id="UOv-Zy-A9d"/>
-                                            <constraint firstItem="apD-hN-Whw" firstAttribute="top" secondItem="LIC-gZ-sn1" secondAttribute="bottom" constant="20" id="XUi-We-7ag"/>
+                                            <constraint firstItem="pCg-5A-lhh" firstAttribute="top" secondItem="sX8-DI-2Xg" secondAttribute="bottom" constant="20" id="TbB-XQ-sGH"/>
+                                            <constraint firstItem="apD-hN-Whw" firstAttribute="leading" secondItem="do4-6i-ycx" secondAttribute="trailing" constant="8" id="V4q-VE-Xyg"/>
                                             <constraint firstItem="e4G-ZI-TbV" firstAttribute="top" secondItem="YCr-B1-YMK" secondAttribute="top" constant="25" id="YCI-xa-AbS"/>
                                             <constraint firstItem="WN5-ap-AMi" firstAttribute="centerX" secondItem="YCr-B1-YMK" secondAttribute="centerX" id="ZlD-IY-Lnb"/>
+                                            <constraint firstAttribute="trailing" secondItem="do4-6i-ycx" secondAttribute="trailing" constant="180" id="aU5-XU-UTe"/>
                                             <constraint firstItem="Qhp-cR-QJ3" firstAttribute="top" secondItem="7Lz-uh-JC7" secondAttribute="bottom" constant="1" id="aU6-xX-hVD"/>
                                             <constraint firstItem="7Lz-uh-JC7" firstAttribute="centerX" secondItem="YCr-B1-YMK" secondAttribute="centerX" id="b5a-R1-2fP"/>
-                                            <constraint firstItem="apD-hN-Whw" firstAttribute="height" secondItem="pCg-5A-lhh" secondAttribute="height" id="dmY-Vd-dE2"/>
-                                            <constraint firstItem="apD-hN-Whw" firstAttribute="width" secondItem="pCg-5A-lhh" secondAttribute="width" id="hBH-R8-xyT"/>
                                             <constraint firstItem="7Lz-uh-JC7" firstAttribute="top" secondItem="e4G-ZI-TbV" secondAttribute="bottom" constant="8" id="l0h-eV-Lnf"/>
-                                            <constraint firstItem="do4-6i-ycx" firstAttribute="leading" secondItem="pCg-5A-lhh" secondAttribute="trailing" constant="8" id="l3m-5b-Lvs"/>
-                                            <constraint firstItem="LIC-gZ-sn1" firstAttribute="leading" secondItem="sX8-DI-2Xg" secondAttribute="trailing" id="pND-if-clG"/>
+                                            <constraint firstItem="do4-6i-ycx" firstAttribute="top" secondItem="C3X-Cy-G4J" secondAttribute="bottom" constant="14" id="mSN-nE-bWr"/>
+                                            <constraint firstItem="do4-6i-ycx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sX8-DI-2Xg" secondAttribute="trailing" constant="8" symbolic="YES" id="n0l-VJ-8KH"/>
+                                            <constraint firstItem="sX8-DI-2Xg" firstAttribute="leading" secondItem="YCr-B1-YMK" secondAttribute="leading" constant="26" id="pBS-aL-5N0"/>
+                                            <constraint firstItem="LIC-gZ-sn1" firstAttribute="width" secondItem="sX8-DI-2Xg" secondAttribute="width" id="q90-eK-HoP"/>
                                             <constraint firstItem="do4-6i-ycx" firstAttribute="centerX" secondItem="YCr-B1-YMK" secondAttribute="centerX" id="qCH-IG-tHJ"/>
-                                            <constraint firstItem="sX8-DI-2Xg" firstAttribute="leading" secondItem="YCr-B1-YMK" secondAttribute="leading" id="qNq-J1-Fq0"/>
+                                            <constraint firstItem="apD-hN-Whw" firstAttribute="height" secondItem="pCg-5A-lhh" secondAttribute="height" id="qat-or-1HT"/>
                                             <constraint firstItem="3s9-WA-bKx" firstAttribute="centerX" secondItem="YCr-B1-YMK" secondAttribute="centerX" id="qjd-Go-dRb"/>
+                                            <constraint firstAttribute="trailing" secondItem="LIC-gZ-sn1" secondAttribute="trailing" constant="26" id="sGT-j1-twB"/>
                                             <constraint firstItem="e4G-ZI-TbV" firstAttribute="centerX" secondItem="YCr-B1-YMK" secondAttribute="centerX" id="sMs-qb-pnU"/>
-                                            <constraint firstItem="apD-hN-Whw" firstAttribute="leading" secondItem="do4-6i-ycx" secondAttribute="trailing" constant="8" id="w51-xC-zwK"/>
+                                            <constraint firstItem="sX8-DI-2Xg" firstAttribute="top" secondItem="C3X-Cy-G4J" secondAttribute="bottom" constant="20" id="sPY-fm-yQM"/>
                                             <constraint firstItem="C3X-Cy-G4J" firstAttribute="top" secondItem="3s9-WA-bKx" secondAttribute="bottom" constant="20" id="wbO-4e-DBX"/>
-                                            <constraint firstAttribute="trailing" secondItem="apD-hN-Whw" secondAttribute="trailing" constant="8" id="zVl-gH-TMN"/>
+                                            <constraint firstItem="apD-hN-Whw" firstAttribute="top" secondItem="LIC-gZ-sn1" secondAttribute="bottom" constant="20" id="yZO-Dk-zeS"/>
+                                            <constraint firstItem="LIC-gZ-sn1" firstAttribute="top" secondItem="C3X-Cy-G4J" secondAttribute="bottom" constant="20" id="zjq-wV-VpJ"/>
                                         </constraints>
                                     </scrollView>
                                 </subviews>

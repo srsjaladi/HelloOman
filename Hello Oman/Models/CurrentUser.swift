@@ -20,25 +20,26 @@ class CurrentUser {
     static let sharedInstance = CurrentUser()
     
     fileprivate var defaults: UserDefaults = UserDefaults.standard
-    
-    var token: String?
     var user: User?
+    
     
  
     func deserialize(_ data: [String: AnyObject]) {
         
-       
-//        guard let uToken = data[Keys.Token.rawValue] as? String else {
-//            return
-//        }
-        
         guard let uUser = data[Keys.User.rawValue] as? [String: AnyObject] else {
             return
         }
-     
-//        self.token = uToken
         self.user = User.deserialize(uUser)
        
+    }
+    
+    func agentDeserialize(_ data: [String: AnyObject]) {
+        
+        guard let agent = data[Keys.Agent.rawValue] as? [String: AnyObject] else {
+            return
+        }
+        self.user?.agentInfo = AgentInfo(object: agent as AnyObject)
+        
     }
     
     func save() {
@@ -50,16 +51,22 @@ class CurrentUser {
     
     func load() {
         if let dictionary = defaults.object(forKey: Keys.User.rawValue) as? [String: AnyObject] {
-            self.user = (User.deserialize(dictionary)! as User)
+            
+            if let dictionaryAgent = defaults.object(forKey: Keys.Agent.rawValue) as? [String: AnyObject] {
+                let agentDict = AgentInfo(object: dictionaryAgent as AnyObject)
+                self.user = (User.deserialize(dictionary)! as User)
+                self.user?.agentInfo = agentDict
+            }
+            
+            
             
         }
+       
     }
     
     fileprivate func wipe() {
         
-        self.token = nil
         self.user = nil
-        defaults.removeObject(forKey: Keys.Token.rawValue)
         defaults.removeObject(forKey: Keys.User.rawValue)
         defaults.synchronize()
     }

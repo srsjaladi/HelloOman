@@ -7,29 +7,40 @@
 //
 
 import UIKit
-
+import MBProgressHUD
 
 
 class LandingViewController: UIViewController,CAPSPageMenuDelegate,HomeVCDelegate,PackagesVCDelegate,TravelPlansVCDelegate {
 
-    
-    
+    @IBOutlet weak var btnFilterImgView: UIImageView!
+    @IBOutlet weak var btnFilter: UIButton!
     @IBOutlet weak var menuBtn: UIBarButtonItem!
     var pageMenu: CAPSPageMenu?
     let pageMenuTag: Int = 100
     var selectedPageIndex: Int = 0
     var totalCount : Int = 0
     var positionPage : Int = 0
+    var homeDetails : HomeModel?
+    var packgesDetails : PackagesModelList?
+    var travelPlansList = [CategoryModel]()
     @IBOutlet weak var MainView: UIView!
     @IBOutlet weak var btnContent: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
-
+        self.btnFilterImgView.cornerRadius = self.btnFilterImgView.frame.width/2
+        self.btnFilterImgView.clipsToBounds = true
+        self.btnFilter.isHidden = true
+        self.btnFilterImgView.backgroundColor = UIColor.clear
+        
         let img = UIImage(named: "TabBarImg")
+
         self.navigationController?.navigationBar.setBackgroundImage(img, for: .default)
-        self.buildPageMenu(positionPage, animated: true)
+        if let userID = (CurrentUser.sharedInstance.user?.id), let agentId = (CurrentUser.sharedInstance.user?.agentInfo.agent_id) {
+            self.getHomeDetails(userID,agentId: agentId,start: 0)
+        }
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -48,11 +59,83 @@ class LandingViewController: UIViewController,CAPSPageMenuDelegate,HomeVCDelegat
 
     func refreshStores(_ position: Int, animated : Bool) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + (0.3)) {
-            // your function here
-            self.buildPageMenu(position, animated: animated)
+        DispatchQueue.main.async {
+            if let userID = (CurrentUser.sharedInstance.user?.id), let agentId = (CurrentUser.sharedInstance.user?.agentInfo.agent_id) {
+                self.getHomeDetails(userID,agentId: agentId,start: 0)
+            }
         }
         
+    }
+    
+    func getHomeDetails(_ userId : String,agentId : String, start: Int)  {
+        MBProgressHUD.showHUDAddedGlobal()
+        HelloOmanAPI.sharedInstance.getHomeDetails(userId, handler: { (homeDetails, error) in
+            if let error: HelloOmanError = error {
+                MBProgressHUD.dismissGlobalHUD()
+                switch error.code {
+                case .Default:
+                    self.showErrorAlert(error)
+                    break
+                default:
+                    self.showErrorAlert(error)
+                    break
+                }
+            }
+            else
+            {
+                MBProgressHUD.dismissGlobalHUD()
+                self.homeDetails = homeDetails
+                self.getPackagesDetails(userId,agentId:agentId, start:start)
+            }
+        })
+    }
+    
+    func getPackagesDetails(_ userId : String, agentId : String, start: Int)  {
+        MBProgressHUD.showHUDAddedGlobal()
+        HelloOmanAPI.sharedInstance.getAllPackages(userId, agentId: agentId, start: start,  handler: { (response, error) in
+            if let error: HelloOmanError = error {
+                MBProgressHUD.dismissGlobalHUD()
+                switch error.code {
+                case .Default:
+                    self.showErrorAlert(error)
+                    break
+                default:
+                    self.showErrorAlert(error)
+                    break
+                }
+            }
+            else
+            {
+                MBProgressHUD.dismissGlobalHUD()
+                let packagesModelList = response as? PackagesModelList
+                self.packgesDetails = packagesModelList
+                self.getTravelPLans(userId: (CurrentUser.sharedInstance.user?.id)!)
+            }
+        })
+    }
+    
+    func getTravelPLans(userId: String)  {
+        MBProgressHUD.showHUDAddedGlobal()
+        HelloOmanAPI.sharedInstance.getTravelPlansDetails(user_id: userId, handler: { (allTravelPlanDetails, error) in
+            if let error: HelloOmanError = error {
+                MBProgressHUD.dismissGlobalHUD()
+                switch error.code {
+                case .Default:
+                    self.showErrorAlert(error)
+                    break
+                default:
+                    self.showErrorAlert(error)
+                    break
+                }
+            }
+            else
+            {
+                MBProgressHUD.dismissGlobalHUD()
+                let travelPlansList = allTravelPlanDetails as [CategoryModel]
+                self.travelPlansList = travelPlansList
+                self.buildPageMenu(self.positionPage, animated: true)
+            }
+        })
     }
     
     fileprivate func buildPageMenu(_ position: Int, animated : Bool)
@@ -75,18 +158,24 @@ class LandingViewController: UIViewController,CAPSPageMenuDelegate,HomeVCDelegat
         let homeVC: HomeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         homeVC.title = "HOME"
         homeVC.delegate = self
+        homeVC.containerLandingVC = self
+        homeVC.homeDetails = self.homeDetails
         controllerArray.append(homeVC)
         itemCount += 1
         
         let packagesVC: PackagesViewController = storyboard.instantiateViewController(withIdentifier: "PackagesViewController") as! PackagesViewController
         packagesVC.title = "PACKAGES"
+        packagesVC.packgesDetails = self.packgesDetails
+        packagesVC.containerLandingVC = self
         packagesVC.delegate = self
         controllerArray.append(packagesVC)
         itemCount += 1
         
         let trvlPlansVC: TravelPlansViewController = storyboard.instantiateViewController(withIdentifier: "TravelPlansViewController") as! TravelPlansViewController
         trvlPlansVC.title = "TRAVEL PLANS"
+        trvlPlansVC.travelPlansList = self.travelPlansList
         trvlPlansVC.delegate = self
+        trvlPlansVC.containerLandingVC = self
         controllerArray.append(trvlPlansVC)
         itemCount += 1
         
@@ -139,7 +228,16 @@ class LandingViewController: UIViewController,CAPSPageMenuDelegate,HomeVCDelegat
     }
     
     func didMoveToPage(_ controller: UIViewController, index: Int) {
-        
+        if index == 1
+        {
+            self.btnFilter.isHidden = false
+            self.btnFilterImgView.backgroundColor = UIColor.oldPinkColor()
+        }
+        else
+        {
+            self.btnFilter.isHidden = true
+            self.btnFilterImgView.backgroundColor = UIColor.clear
+        }
     }
     
     @IBAction func menuBtnClicked(_ sender: Any) {
@@ -159,5 +257,85 @@ class LandingViewController: UIViewController,CAPSPageMenuDelegate,HomeVCDelegat
     
     @IBAction func btnSearchClicked(_ sender: Any) {
     }
+    
+    @IBAction func btnFilterClicked(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let FilterPackgesVC: FilterPackgesViewController = storyboard.instantiateViewController(withIdentifier: "FilterPackgesViewController") as! FilterPackgesViewController
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(FilterPackgesVC, animated: true)
+    }
+    func gotoPlanRequestPage(subject : String , image: String)  {
+        
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let reqVC: RequestPlanViewController = homeStoryboard.instantiateViewController(withIdentifier: "RequestPlanViewController") as! RequestPlanViewController
+        reqVC.strSubject = subject
+        reqVC.strImage = image
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(reqVC, animated: true)
+    }
+    
+    
+    func gotoPackgesViewController(type : String, search: String, title : String)  {
+        
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let morePackgesVC: MorePackagesViewController = storyboard.instantiateViewController(withIdentifier: "MorePackagesViewController") as! MorePackagesViewController
+        morePackgesVC.agentId = (CurrentUser.sharedInstance.user?.agentInfo.agent_id)!
+        morePackgesVC.userId = (CurrentUser.sharedInstance.user?.id)!
+        morePackgesVC.type = type
+        morePackgesVC.search = search
+        morePackgesVC.strTitle = title
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(morePackgesVC, animated: true)
+    }
+    
+    func gotoTravelIdeasViewController(categoryId : String, title : String)  {
+        
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let moreTravelIdeaVC: MoreTravelIdeasViewController = storyboard.instantiateViewController(withIdentifier: "MoreTravelIdeasViewController") as! MoreTravelIdeasViewController
+        moreTravelIdeaVC.agentId = (CurrentUser.sharedInstance.user?.agentInfo.agent_id)!
+        moreTravelIdeaVC.categoryId = categoryId
+        moreTravelIdeaVC.strTitle = title
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(moreTravelIdeaVC, animated: true)
+    }
+    
+    func gotoPakcgesDetailsViewController(packges: PackagesModel)  {
+        
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let detailPackgesVC: DetailsPackagesViewController = storyboard.instantiateViewController(withIdentifier: "DetailsPackagesViewController") as! DetailsPackagesViewController
+        detailPackgesVC.packgesDetails = packges
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(detailPackgesVC, animated: true)
+    }
+    
+    func gotoTIDetailsViewController(travelIdeas: TravelIdeasModel)  {
+        
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let travelDetailsVC: TravelIdeasDetailsViewController = storyboard.instantiateViewController(withIdentifier: "TravelIdeasDetailsViewController") as! TravelIdeasDetailsViewController
+        travelDetailsVC.travelItems = travelIdeas
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(travelDetailsVC, animated: true)
+        
+    }
+    
+    func gotoRequestToPlanViewController()  {
+        
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let requestPlanVC: RequestPlanViewController = storyboard.instantiateViewController(withIdentifier: "RequestPlanViewController") as! RequestPlanViewController
+        requestPlanVC.strImage = ""
+        requestPlanVC.strSubject = "Enquiry"
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(requestPlanVC, animated: true)
+        
+    }
+    
+    
 }
 

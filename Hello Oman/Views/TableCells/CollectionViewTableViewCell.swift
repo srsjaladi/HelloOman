@@ -9,17 +9,19 @@
 import UIKit
 private let kReuseCollectionCellID = "reuseCollectionCellID"
 private let kReuseSmallCollectionCellID = "reuseSmallCollectionCellID"
+private let kReuseCitySmallCollectionCellID = "reuseCitySmallCollectionCellID"
 
 class CollectionViewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    var CategoryItem : CategoryModel?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        layout.itemSize = CGSize(width: 150.0, height: 100.0)
+        layout.itemSize = CGSize(width: 230.0, height: 150.0)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 10
         layout.scrollDirection = .horizontal
@@ -27,6 +29,8 @@ class CollectionViewTableViewCell: UITableViewCell {
         collectionView.register(UINib(nibName: "\(BigCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: kReuseCollectionCellID)
         
          collectionView.register(UINib(nibName: "\(SmallCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: kReuseSmallCollectionCellID)
+        
+         collectionView.register(UINib(nibName: "\(SmallCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: kReuseCitySmallCollectionCellID)
 
     }
 

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="MainTabelHeaderSectionView" id="iN0-l3-epB" customClass="MainTabelHeaderSectionView" customModule="Hello_Oman" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="430"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJk-1L-SUG">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="430"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="County Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOW-Wi-4nN">
+                            <rect key="frame" x="10" y="10" width="104" height="20"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                            <color key="textColor" red="0.15686274510000001" green="0.1764705882" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7RV-Am-I0r">
+                            <rect key="frame" x="10" y="40" width="355" height="303"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="303" id="pUc-C9-GG7"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kML-4I-sIi">
+                            <rect key="frame" x="10" y="351" width="355" height="71"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                            <color key="textColor" red="0.15686274510000001" green="0.1764705882" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="HOW-Wi-4nN" firstAttribute="leading" secondItem="jJk-1L-SUG" secondAttribute="leading" constant="10" id="0Hg-Gx-FiT"/>
+                        <constraint firstAttribute="bottom" secondItem="kML-4I-sIi" secondAttribute="bottom" constant="8" id="Qkg-ab-ITY"/>
+                        <constraint firstItem="7RV-Am-I0r" firstAttribute="leading" secondItem="jJk-1L-SUG" secondAttribute="leading" constant="10" id="Qtf-Sv-iHn"/>
+                        <constraint firstAttribute="trailing" secondItem="kML-4I-sIi" secondAttribute="trailing" constant="10" id="Rvx-Ii-bga"/>
+                        <constraint firstAttribute="trailing" secondItem="7RV-Am-I0r" secondAttribute="trailing" constant="10" id="a8U-0c-Ng8"/>
+                        <constraint firstItem="kML-4I-sIi" firstAttribute="top" secondItem="7RV-Am-I0r" secondAttribute="bottom" constant="8" id="f3a-XW-9vs"/>
+                        <constraint firstItem="kML-4I-sIi" firstAttribute="leading" secondItem="jJk-1L-SUG" secondAttribute="leading" constant="10" id="lSK-xL-e88"/>
+                        <constraint firstItem="7RV-Am-I0r" firstAttribute="top" secondItem="HOW-Wi-4nN" secondAttribute="bottom" constant="10" id="rEx-WC-Xnm"/>
+                        <constraint firstItem="HOW-Wi-4nN" firstAttribute="top" secondItem="jJk-1L-SUG" secondAttribute="top" constant="10" id="vFZ-CZ-KlP"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="jJk-1L-SUG" secondAttribute="trailing" id="SOG-tf-iw7"/>
+                <constraint firstItem="jJk-1L-SUG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Wng-eb-d3e"/>
+                <constraint firstAttribute="bottom" secondItem="jJk-1L-SUG" secondAttribute="bottom" id="tUS-sL-daf"/>
+                <constraint firstItem="jJk-1L-SUG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zXF-Cm-Vr3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imgView" destination="7RV-Am-I0r" id="dlN-BF-phR"/>
+                <outlet property="lblDesc" destination="kML-4I-sIi" id="fmi-I5-sFg"/>
+                <outlet property="lblTitle" destination="HOW-Wi-4nN" id="ij9-RH-828"/>
+            </connections>
+            <point key="canvasLocation" x="282.5" y="88"/>
+        </view>
+    </objects>
+</document>

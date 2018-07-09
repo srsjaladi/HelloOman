@@ -11,8 +11,12 @@ private let kReuseTableCellID = "reuseTableCellID"
 private let kReuseDetailTableCellID = "reuseDetailTableCellID"
 private let kReuseCollectionCellID = "reuseCollectionCellID"
 private let kReuseSmallCollectionCellID = "reuseSmallCollectionCellID"
+private let kReuseCitySmallCollectionCellID = "reuseCitySmallCollectionCellID"
 private let kBtnMoreTag = 1200
-private let kCollectionViewTag = 200
+private let kTravelIdeasCollectionViewTag = 200
+private let kCountriesCollectionViewTag = 100
+private let kCitiesCollectionViewTag = 10
+
 protocol HomeVCDelegate {
     func refreshStores(_ position: Int, animated : Bool)
 }
@@ -22,7 +26,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tblView: UITableView!
     var refreshControl: UIRefreshControl?
     var delegate: HomeVCDelegate?
-    
+    var homeDetails : HomeModel?
+    var containerLandingVC: LandingViewController?
+    var rect = CGRect()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -72,7 +78,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 130.0
+        if (indexPath.section ==  3)
+        {
+            return 100.0
+        }
+        else
+        {
+            return 170.0
+        }
+        
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,14 +96,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         else
         {
-           return 1
+            return 1
         }
         
     }
     
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return 30.0
+        if section == 4
+        {
+            return 60.0
+        }
+        else
+        {
+            return 30.0
+        }
+        
     }
     
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -142,6 +164,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             headerView.tailingConstraint.constant = 30.0
             headerView.leadingConstraint.constant = 30.0
             headerView.lblDynamic.text = "PLAN YOUR TRIP"
+            headerView.viewForContent.layer.cornerRadius = 5.0
+            headerView.viewForContent.clipsToBounds = true
             headerView.btnMore.isHidden = true
             headerView.btnForPlan.isHidden = false
             headerView.btnForPlan.addTarget(self, action: #selector(HomeViewController.btnForPlanClicked(sender:)), for: .touchUpInside)
@@ -163,10 +187,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: kReuseTableCellID, for: indexPath) as! CollectionViewTableViewCell
             
-            cell.setCollectionViewDataSourceDelegate(self, forRow: (indexPath.section + kCollectionViewTag))
-            cell.collectionViewOffset = 0
-            
-            return cell
+            if indexPath.section == 0
+            {
+                cell.setCollectionViewDataSourceDelegate(self, forRow: kTravelIdeasCollectionViewTag)
+                cell.collectionViewOffset = 0
+                
+                return cell
+            }
+            else if indexPath.section == 1
+            {
+                cell.setCollectionViewDataSourceDelegate(self, forRow: kCitiesCollectionViewTag)
+                cell.collectionViewOffset = 0
+                
+                return cell
+            }
+            else
+            {
+                cell.setCollectionViewDataSourceDelegate(self, forRow: kCountriesCollectionViewTag)
+                cell.collectionViewOffset = 0
+                
+                return cell
+            }
+           
         }
        
         
@@ -177,11 +219,25 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
      @objc func btnMoreClicked(sender: AnyObject) {
-        print("Clicked")
+        
+        switch (sender.tag - kBtnMoreTag) {
+        case 0:
+            self.containerLandingVC?.gotoTravelIdeasViewController(categoryId: "0", title: "Travel Ideas")
+            break
+        case 1:
+            self.containerLandingVC?.gotoPackgesViewController(type: "1", search:"", title:"Inbound Holidays" )
+            break
+        case 2:
+             self.containerLandingVC?.gotoPackgesViewController(type: "2", search:"", title:"Outbond Holidays" )
+            break
+        default:
+            break
+        }
     }
     
     @objc func btnForPlanClicked(sender: AnyObject) {
-        print("Plan Clicked")
+        //RequestPlanViewController
+        self.containerLandingVC?.gotoPlanRequestPage(subject: "Enquiry", image: "")
     }
     
     fileprivate func getAttributedStringWithLineSpacing(_ string: String, lineSpacing: CGFloat) -> NSAttributedString {
@@ -208,40 +264,121 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return 5
+        if (collectionView.tag ==  kTravelIdeasCollectionViewTag)
+        {
+            return (self.homeDetails?.travelIdeas.count)!
+        }
+        else if (collectionView.tag ==  kCountriesCollectionViewTag)
+        {
+            return (self.homeDetails?.countries.count)!
+        }
+        else
+        {
+            return (self.homeDetails?.cities.count)!
+        }
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        if (collectionView.tag ==  kCollectionViewTag) {
+        if (collectionView.tag ==  kTravelIdeasCollectionViewTag) {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kReuseCollectionCellID, for: indexPath) as! BigCollectionViewCell
             
+             let trvlIdeaObj =  self.homeDetails?.travelIdeas[indexPath.row]
+            
+            if let imageURL = URL(string: (trvlIdeaObj!.travelImageUrl))
+            {
+                cell.imageTitle.af_setImage(
+                    withURL: imageURL,
+                    placeholderImage: UIImage(named: "DefaultImage"),
+                    filter: nil,
+                    imageTransition: .crossDissolve(0.3)
+                )
+            }
+            
+            cell.lblTitle.text = trvlIdeaObj?.travelTitle
+            
+            let attributeString = NSAttributedString(string: (trvlIdeaObj?.travelTitle)!, attributes: [ NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 12.0)! ])
+            
+            rect = attributeString.boundingRect(with: CGSize(width:  (cell.lblTitle.frame.width - 10), height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, context: nil)
+            
+            cell.lblTitleConstraint.constant = rect.size.height + 10.0
             return cell
+        }
+        else if (collectionView.tag ==  kCountriesCollectionViewTag)
+        {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kReuseSmallCollectionCellID, for: indexPath) as! SmallCollectionViewCell
+            
+            let countriesObj =  self.homeDetails?.countries[indexPath.row]
+            
+            if let imageURL = URL(string: (countriesObj!.countryImageUrl))
+            {
+                cell.imageTitle.af_setImage(
+                    withURL: imageURL,
+                    placeholderImage: UIImage(named: "DefaultImage"),
+                    filter: nil,
+                    imageTransition: .crossDissolve(0.3)
+                )
+            }
+            
+            cell.lblTitle.text = countriesObj?.countryName
+             return cell
         }
         else
         {
-           
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kReuseSmallCollectionCellID, for: indexPath) as! SmallCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kReuseCitySmallCollectionCellID, for: indexPath) as! SmallCollectionViewCell
+            
+            let citiesObj =  self.homeDetails?.cities[indexPath.row]
+            
+            if let imageURL = URL(string: (citiesObj!.cityImageUrl))
+            {
+                cell.imageTitle.af_setImage(
+                    withURL: imageURL,
+                    placeholderImage: UIImage(named: "DefaultImage"),
+                    filter: nil,
+                    imageTransition: .crossDissolve(0.3)
+                )
+            }
+            
+            cell.lblTitle.text = citiesObj?.cityName
             
             return cell
         }
         
+
         
     }
-    
+
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
+        if (collectionView.tag ==  kTravelIdeasCollectionViewTag) {
+             let trvlIdeaObj =  self.homeDetails?.travelIdeas[indexPath.row]
+            self.containerLandingVC?.gotoTIDetailsViewController(travelIdeas: trvlIdeaObj!)
+        }
+        else
+        {
+            var countriesObj = CountriesModel()
+            var citiessObj = CitiesModel()
+            if (collectionView.tag ==  kCountriesCollectionViewTag)
+            {
+                 countriesObj =  (self.homeDetails?.countries[indexPath.row])!
+            }
+            else
+            {
+                citiessObj =  (self.homeDetails?.cities[indexPath.row])!
+            }
+            self.containerLandingVC?.gotoPackgesViewController(type: "0", search: (collectionView.tag ==  kCountriesCollectionViewTag) ? (countriesObj.countryName):(citiessObj.cityName), title: (collectionView.tag ==  kCountriesCollectionViewTag) ? (countriesObj.countryName):(citiessObj.cityName))
+           
+        }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 150.0 , height: 100.0)
+        return CGSize(width: 230.0 , height: 150.0)
         
     }
     

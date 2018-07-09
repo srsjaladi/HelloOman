@@ -35,6 +35,10 @@ class LeftMenuTVC: UITableViewController {
     fileprivate var selectedMenu: MenuOption = .Home
     fileprivate var actualAvailableMenuItems: [MenuOption]?
     
+    
+    @IBOutlet weak var btnForImg: UIButton!
+    
+    @IBOutlet weak var btnForLogo: UIButton!
     @IBOutlet weak var btnForTop: UIButton!
     @IBOutlet weak var lblUserEmail: UILabel!
     @IBOutlet weak var lblUserName: UILabel!
@@ -271,5 +275,11 @@ class LeftMenuTVC: UITableViewController {
         self.slideMenuController()?.changeMainViewController(navigationController, close: true)
     }
     
+    @IBAction func btnForBrandClicked(_ sender: Any) {
+        
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let agentDetailsVC = homeStoryboard.instantiateViewController(withIdentifier: "AgentDetailsViewController") as! AgentDetailsViewController
+        self.present(agentDetailsVC, animated: true, completion: nil)
+    }
     
 }

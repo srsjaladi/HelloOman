@@ -21,6 +21,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashImg" translatesAutoresizingMaskIntoConstraints="NO" id="mEE-OV-kyj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppImage" translatesAutoresizingMaskIntoConstraints="NO" id="LPC-Sw-gzF">
+                                <rect key="frame" x="146.5" y="70" width="81" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="Yo2-IE-nS1"/>
+                                    <constraint firstAttribute="width" constant="81" id="mok-zz-YHD"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -28,6 +35,8 @@
                             <constraint firstAttribute="trailing" secondItem="mEE-OV-kyj" secondAttribute="trailing" id="5b2-Jh-9jr"/>
                             <constraint firstItem="mEE-OV-kyj" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Ncw-df-nhU"/>
                             <constraint firstAttribute="bottom" secondItem="mEE-OV-kyj" secondAttribute="bottom" id="Zfb-Sa-AJ4"/>
+                            <constraint firstItem="LPC-Sw-gzF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dGi-pu-GoZ"/>
+                            <constraint firstItem="LPC-Sw-gzF" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="70" id="np6-PS-9Cr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,6 +47,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AppImage" width="480" height="458"/>
         <image name="SplashImg" width="320" height="561"/>
     </resources>
 </document>

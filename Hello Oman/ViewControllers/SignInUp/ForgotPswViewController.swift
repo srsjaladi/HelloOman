@@ -68,9 +68,6 @@ class ForgotPswViewController: UIViewController,UITextFieldDelegate {
                 if let error = error {
                     switch error.code
                     {
-                    case .NoEmailForgotPassword:
-                       
-                        break
                     case .Default:
                         self.showErrorAlert(error)
                         break

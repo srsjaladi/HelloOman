@@ -21,11 +21,20 @@ class ListViewTableViewCell: UITableViewCell {
     
     
     
+    
+    @IBOutlet weak var trailingConstrint: NSLayoutConstraint!
+    @IBOutlet weak var leadingConstrint: NSLayoutConstraint!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.conView.layer.cornerRadius = 8 // Your choice here.
+        self.conView.layer.cornerRadius = 15 // Your choice here.
         self.conView.clipsToBounds = true
+        self.conView.layer.shadowColor = UIColor.black.cgColor
+        self.conView.layer.shadowOffset = CGSize(width:1, height:1)
+        self.conView.layer.shadowOpacity = 1
+        self.conView.layer.shadowRadius = 0.5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

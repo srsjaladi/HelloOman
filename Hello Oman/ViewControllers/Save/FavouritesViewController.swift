@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class FavouritesViewController: UIViewController,CAPSPageMenuDelegate,SavedPackagesVCDelegate,TravlIdeasVCDelegate {
 
@@ -18,7 +19,8 @@ class FavouritesViewController: UIViewController,CAPSPageMenuDelegate,SavedPacka
     var selectedPageIndex: Int = 0
     var totalCount : Int = 0
     var positionPage : Int = 0
-
+    var packgesDetails : PackagesModelList?
+    var travelItems : [TravelIdeasModel]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,7 @@ class FavouritesViewController: UIViewController,CAPSPageMenuDelegate,SavedPacka
             self.btnMainAndBack.image = UIImage(named: "BackArrow")
         }
         
-         self.buildPageMenu(positionPage,animated: true)
+        self.getListFavouritePackages(userID: (CurrentUser.sharedInstance.user?.id)!)
         // Do any additional setup after loading the view.
     }
 
@@ -43,9 +45,8 @@ class FavouritesViewController: UIViewController,CAPSPageMenuDelegate,SavedPacka
     
     func refreshStores(_ position: Int, animated : Bool) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + (0.3)) {
-            // your function here
-            self.buildPageMenu(position, animated: animated)
+        DispatchQueue.main.async {
+             self.getListFavouritePackages(userID: (CurrentUser.sharedInstance.user?.id)!)
         }
         
     }
@@ -59,6 +60,58 @@ class FavouritesViewController: UIViewController,CAPSPageMenuDelegate,SavedPacka
         {
              self.navigationController?.popViewController(animated:true)
         }
+    }
+    
+    func getListFavouritePackages(userID : String)  {
+        
+        MBProgressHUD.showHUDAddedGlobal()
+        HelloOmanAPI.sharedInstance.getAllFavouritePackages(userID, handler: { (response, error) in
+            if let error: HelloOmanError = error {
+                MBProgressHUD.dismissGlobalHUD()
+                switch error.code {
+                case .Default:
+                    self.showErrorAlert(error)
+                    break
+                default:
+                    self.showErrorAlert(error)
+                    break
+                }
+            }
+            else
+            {
+                MBProgressHUD.dismissGlobalHUD()
+                if let packagesModelList = response as? PackagesModelList {
+                    self.packgesDetails = packagesModelList
+                    print("total: \(self.packgesDetails!.packagesModelList.count)")
+                }
+                self.getListFavouriteTravelIdeas(userID: userID)
+            }
+        })
+        
+    }
+    
+    func getListFavouriteTravelIdeas(userID : String)  {
+        MBProgressHUD.showHUDAddedGlobal()
+        HelloOmanAPI.sharedInstance.getFavouriteTravelPlansDetails(user_id: userID, handler: { (allTravelPlanDetails, error) in
+            if let error: HelloOmanError = error {
+                MBProgressHUD.dismissGlobalHUD()
+                switch error.code {
+                case .Default:
+                    self.showErrorAlert(error)
+                    break
+                default:
+                    self.showErrorAlert(error)
+                    break
+                }
+            }
+            else
+            {
+                MBProgressHUD.dismissGlobalHUD()
+                let travelPlansList = allTravelPlanDetails as [TravelIdeasModel]
+                self.travelItems = travelPlansList
+                self.buildPageMenu(self.positionPage, animated: true)
+            }
+        })
     }
     
     fileprivate func buildPageMenu(_ position: Int, animated : Bool)
@@ -81,12 +134,16 @@ class FavouritesViewController: UIViewController,CAPSPageMenuDelegate,SavedPacka
         let packgesVC: SavePackagesViewController = storyboard.instantiateViewController(withIdentifier: "SavePackagesViewController") as! SavePackagesViewController
         packgesVC.title = "PACKAGES"
         packgesVC.delegate = self
+        packgesVC.FavouritesVC = self
+        packgesVC.packgesDetails = self.packgesDetails
         controllerArray.append(packgesVC)
         itemCount += 1
         
         let TrvlIdeasVC: SavedTravelIdeasViewController = storyboard.instantiateViewController(withIdentifier: "SavedTravelIdeasViewController") as! SavedTravelIdeasViewController
         TrvlIdeasVC.title = "TRAVEL IDEAS"
         TrvlIdeasVC.delegate = self
+        TrvlIdeasVC.FavouritesVC = self
+        TrvlIdeasVC.travelItems = self.travelItems
         controllerArray.append(TrvlIdeasVC)
         itemCount += 1
      
@@ -140,6 +197,27 @@ class FavouritesViewController: UIViewController,CAPSPageMenuDelegate,SavedPacka
     
     func didMoveToPage(_ controller: UIViewController, index: Int) {
         
+    }
+    
+    func gotoTIDetailsViewController(travelIdeas: TravelIdeasModel)  {
+        
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let travelDetailsVC: TravelIdeasDetailsViewController = storyboard.instantiateViewController(withIdentifier: "TravelIdeasDetailsViewController") as! TravelIdeasDetailsViewController
+        travelDetailsVC.travelItems = travelIdeas
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(travelDetailsVC, animated: true)
+        
+    }
+    
+    func gotoPakcgesDetailsViewController(packges: PackagesModel)  {
+        
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let detailPackgesVC: DetailsPackagesViewController = storyboard.instantiateViewController(withIdentifier: "DetailsPackagesViewController") as! DetailsPackagesViewController
+        detailPackgesVC.packgesDetails = packges
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(detailPackgesVC, animated: true)
     }
     
 }

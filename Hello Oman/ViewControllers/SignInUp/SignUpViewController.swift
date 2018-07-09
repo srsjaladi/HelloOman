@@ -49,17 +49,11 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
             else {
                 if let error: HelloOmanError = response as? HelloOmanError {
                     switch error.code {
-                    case .SignUpInvalidEmail:
-                        break
-                    case .SignUpCurrenPasswordInvalid:
-                        break
-                    case .SignUpNoInvites:
-                        self.showErrorAlert("Oops!", message: "Sorry, to gain access to Kollectin, you need an invitation from an existing member. To find out more, please visit www.kollectin.com")
-                        break
                     case .Default:
                         self.showErrorAlert(error)
                         break
                     default:
+                        self.showErrorAlert(error)
                         break
                     }
                 }

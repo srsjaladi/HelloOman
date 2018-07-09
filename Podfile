@@ -14,5 +14,8 @@ target 'Hello Oman' do
 	pod 'SwiftyJSON', '~> 3.0.0'
     pod 'FBSDKLoginKit'
     pod 'GoogleSignIn'
+    pod 'Google-Mobile-Ads-SDK'
+    pod "MWPhotoBrowser"
+
 
 end

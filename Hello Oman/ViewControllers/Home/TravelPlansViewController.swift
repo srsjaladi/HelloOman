@@ -21,7 +21,10 @@ class TravelPlansViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tblView: UITableView!
     var refreshControl: UIRefreshControl?
     var delegate: TravelPlansVCDelegate?
-    
+    var travelPlansList = [CategoryModel]()
+    var containerLandingVC: LandingViewController?
+    var numOfSections : Int = 0
+    var rect = CGRect()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +37,7 @@ class TravelPlansViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.tblView.register(UINib(nibName: "\(DetaildTableViewCell.self)", bundle: nil), forCellReuseIdentifier: kReuseDetailTableCellID)
         
+        numOfSections = (self.travelPlansList.count + 1)
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,17 +71,17 @@ class TravelPlansViewController: UIViewController, UITableViewDelegate, UITableV
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 4
+        return numOfSections
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 130.0
+        return 170.0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section == 3 {
+        if section == (numOfSections - 1) {
             return 0
         }
         else
@@ -89,62 +93,54 @@ class TravelPlansViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return 30.0
+        if section == (numOfSections - 1)
+        {
+            return 60.0
+        }
+        else
+        {
+            return 30.0
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = self.tblView.dequeueReusableHeaderFooterView(withIdentifier: "HomeSectionHeaderCReusableView" ) as! HomeSectionHeaderCReusableView
-        if section == 0
+        if section == (numOfSections - 1)
         {
-            headerView.tailingConstraint.constant = 0.0
-            headerView.leadingConstraint.constant = 0.0
-            headerView.lblDynamic.text = "Weekend Getaways"
-            headerView.btnForPlan.isHidden = true
-            headerView.btnMore.isHidden = false
-            headerView.btnMore.tag = section + kBtnMoreTag
-            headerView.btnMore.addTarget(self, action: #selector(HomeViewController.btnMoreClicked(sender:)), for: .touchUpInside)
+            headerView.tailingConstraint.constant = 30.0
+            headerView.leadingConstraint.constant = 30.0
+            headerView.lblDynamic.text = "SEE ALL"
+            headerView.viewForContent.layer.cornerRadius = 5.0
+            headerView.viewForContent.clipsToBounds = true
+            headerView.btnMore.isHidden = true
+            headerView.btnForPlan.isHidden = false
+            headerView.btnForPlan.addTarget(self, action: #selector(TravelPlansViewController.btnSeeAllClicked(sender:)), for: .touchUpInside)
             return headerView
         }
-        else if section == 1
+        else
         {
+            let ObjCurrent = self.travelPlansList[section]
             headerView.tailingConstraint.constant = 0.0
             headerView.leadingConstraint.constant = 0.0
-            headerView.lblDynamic.text = "Honeymoon"
-            headerView.btnForPlan.isHidden = true
-            headerView.btnMore.isHidden = false
-            headerView.btnMore.tag = section + kBtnMoreTag
-            headerView.btnMore.addTarget(self, action: #selector(HomeViewController.btnMoreClicked(sender:)), for: .touchUpInside)
-            return headerView
-        }
-        else if section == 2
-        {
-            headerView.tailingConstraint.constant = 0.0
-            headerView.leadingConstraint.constant = 0.0
-            headerView.lblDynamic.text = "Cool"
+            headerView.lblDynamic.text = ObjCurrent.category
             headerView.btnForPlan.isHidden = true
             headerView.btnMore.isHidden = false
             headerView.btnMore.tag = section + kBtnMoreTag
             headerView.btnMore.addTarget(self, action: #selector(TravelPlansViewController.btnMoreClicked(sender:)), for: .touchUpInside)
             return headerView
         }
-        else
-        {
-            headerView.tailingConstraint.constant = 30.0
-            headerView.leadingConstraint.constant = 30.0
-            headerView.lblDynamic.text = "SEE ALL"
-            headerView.btnMore.isHidden = true
-            headerView.btnForPlan.isHidden = false
-            headerView.btnForPlan.addTarget(self, action: #selector(TravelPlansViewController.btnSeeAllClicked(sender:)), for: .touchUpInside)
-            return headerView
-        }
+     
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: kReuseTableCellID, for: indexPath) as! CollectionViewTableViewCell
         
-        cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+         let ObjCurrent = self.travelPlansList[indexPath.section]
+        cell.CategoryItem = ObjCurrent
+        cell.setCollectionViewDataSourceDelegate(self, forRow:Int(ObjCurrent.id)!)
         cell.collectionViewOffset = 0
         
         return cell
@@ -154,14 +150,17 @@ class TravelPlansViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
     }
     
     @objc func btnMoreClicked(sender: AnyObject) {
-        print("Clicked")
+        let ObjCurrent = self.travelPlansList[(sender.tag - kBtnMoreTag)]
+        self.containerLandingVC?.gotoTravelIdeasViewController(categoryId: ObjCurrent.id, title: ObjCurrent.category)
+        
     }
     
     @objc func btnSeeAllClicked(sender: AnyObject) {
-        print("Plan Clicked")
+        self.containerLandingVC?.gotoTravelIdeasViewController(categoryId: "0", title: "Travel Ideas")
     }
     
     fileprivate func getAttributedStringWithLineSpacing(_ string: String, lineSpacing: CGFloat) -> NSAttributedString {
@@ -192,7 +191,19 @@ extension TravelPlansViewController : UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return 5
+        var numForCurrentModel : Int = 0
+        
+        for i in 0 ... (self.travelPlansList.count - 1)
+        {
+            let ObjCurrent = self.travelPlansList[i]
+            if collectionView.tag == Int(ObjCurrent.id)
+            {
+                numForCurrentModel = i
+            }
+        }
+        
+        let ObjCurrent = self.travelPlansList[numForCurrentModel]
+        return ObjCurrent.ideas.count
     }
     
     
@@ -200,6 +211,38 @@ extension TravelPlansViewController : UICollectionViewDelegate, UICollectionView
     {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kReuseCollectionCellID, for: indexPath) as! BigCollectionViewCell
+        
+        var numForCurrentObject : Int = 0
+        
+        for i in 0 ... (self.travelPlansList.count - 1)
+        {
+            let ObjCurrent = self.travelPlansList[i]
+            if collectionView.tag == Int(ObjCurrent.id)
+            {
+                numForCurrentObject = i
+            }
+        }
+        
+        let ObjCurrent = self.travelPlansList[numForCurrentObject]
+        let IdeasObj = ObjCurrent.ideas[indexPath.row]
+        
+        if let imageURL = URL(string: (IdeasObj.Ideas_image))
+        {
+            cell.imageTitle.af_setImage(
+                withURL: imageURL,
+                placeholderImage: UIImage(named: "DefaultImage"),
+                filter: nil,
+                imageTransition: .crossDissolve(0.3)
+            )
+        }
+        
+        cell.lblLatest.text = ObjCurrent.category
+        cell.lblTitle.text = IdeasObj.Ideas_title
+        let attributeString = NSAttributedString(string: (IdeasObj.Ideas_title), attributes: [ NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 12.0)! ])
+        
+        rect = attributeString.boundingRect(with: CGSize(width:  (cell.lblTitle.frame.width - 10), height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, context: nil)
+        
+        cell.lblTitleConstraint.constant = rect.size.height + 10.0
         
         return cell
         
@@ -209,13 +252,33 @@ extension TravelPlansViewController : UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         collectionView.deselectItem(at: indexPath, animated: true)
+        var numForCurrentObject : Int = 0
+        for i in 0 ... (self.travelPlansList.count - 1)
+        {
+            let ObjCurrent = self.travelPlansList[i]
+            if collectionView.tag == Int(ObjCurrent.id)
+            {
+                numForCurrentObject = i
+            }
+        }
         
+        let ObjCurrent = self.travelPlansList[numForCurrentObject]
+        let IdeasObj = ObjCurrent.ideas[indexPath.row]
+        
+        var objtravel = TravelIdeasModel()
+        objtravel.travelTitle = IdeasObj.Ideas_title
+        objtravel.travelId = IdeasObj.Ideas_id
+        objtravel.travelIsFavourite = IdeasObj.Ideas_fav
+        objtravel.travelDesc = IdeasObj.Ideas_desc
+        objtravel.travelImageUrl = IdeasObj.Ideas_image
+    
+        self.containerLandingVC?.gotoTIDetailsViewController(travelIdeas: objtravel)
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 150.0 , height: 100.0)
+        return CGSize(width: 230.0 , height: 150.0)
         
     }
     

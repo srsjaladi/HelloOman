@@ -158,17 +158,10 @@ class SignInViewController: UIViewController,GIDSignInDelegate,GIDSignInUIDelega
             else {
                 if let error: HelloOmanError = response as? HelloOmanError {
                     switch error.code {
-                    case .SignInInvalidCredentials:
-                        break
-                    case .Default:
-                        self.showErrorAlert(error)
-                        break
-                    case .TokenExpired:
-                        CurrentUser.sharedInstance.logOut()
-                        break
-                    case .NoInternet:
+                    case .noInternet:
                         self.showErrorAlert(error)
                     default:
+                        self.showErrorAlert(error)
                         break
                     }
                 }
@@ -196,17 +189,11 @@ class SignInViewController: UIViewController,GIDSignInDelegate,GIDSignInUIDelega
             else {
                 if let error: HelloOmanError = response as? HelloOmanError {
                     switch error.code {
-                    case .SignInInvalidCredentials:
-                        break
-                    case .Default:
-                        self.showErrorAlert(error)
-                        break
-                    case .TokenExpired:
-                        CurrentUser.sharedInstance.logOut()
-                        break
-                    case .NoInternet:
+                   
+                    case .noInternet:
                         self.showErrorAlert(error)
                     default:
+                        self.showErrorAlert(error)
                         break
                     }
                 }

@@ -20,6 +20,8 @@ class SavePackagesViewController: UIViewController , UITableViewDelegate, UITabl
     @IBOutlet weak var tblView: UITableView!
     var refreshControl: UIRefreshControl?
     var delegate: SavedPackagesVCDelegate?
+     var packgesDetails : PackagesModelList?
+    var FavouritesVC: FavouritesViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,15 +62,14 @@ class SavePackagesViewController: UIViewController , UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 130.0
+        return 100.0
     }
     
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10
-        
+        return (self.packgesDetails?.packagesModelList.count)!
     }
     
     
@@ -77,6 +78,30 @@ class SavePackagesViewController: UIViewController , UITableViewDelegate, UITabl
         
         let cell = tableView.dequeueReusableCell(withIdentifier: kReuseTableCellID, for: indexPath) as! ListViewTableViewCell
         
+        let modelObj = self.packgesDetails?.packagesModelList[indexPath.row]
+        if (modelObj?.arrPackageImages.count)! > 0 {
+            let imageObj = modelObj?.arrPackageImages[0]
+            if let imageURL = URL(string: (imageObj?.image_URL)!)
+            {
+                cell.imgProfile.af_setImage(
+                    withURL: imageURL,
+                    placeholderImage: UIImage(named: "DefaultImage"),
+                    filter: nil,
+                    imageTransition: .crossDissolve(0.3)
+                )
+            }
+        }
+        else
+        {
+            cell.imgProfile.image = UIImage(named: "DefaultImage")
+        }
+        
+        cell.lblTitle.text = modelObj?.packageTitle
+        cell.lblDetail.text = modelObj?.packagePlaces
+        let num = Int((modelObj?.packageDuration)!)
+        cell.lblTimeDays.text = String(format:"\(num!) Days/\(num! - 1) Nights")
+        let value = String(format: "OMR \((modelObj?.packagePrice)!)/head")
+        cell.lblOMR.text = value
         
         return cell
         
@@ -86,6 +111,9 @@ class SavePackagesViewController: UIViewController , UITableViewDelegate, UITabl
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let modelObj = self.packgesDetails?.packagesModelList[indexPath.row]
+        self.FavouritesVC?.gotoPakcgesDetailsViewController(packges: modelObj!)
         
     }
     

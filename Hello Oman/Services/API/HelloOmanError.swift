@@ -13,38 +13,16 @@ enum ErrorCode: Int
 {
 
     case Default = 1
-    case ComingSoon = 2
-    case ContactNoEmail = 3
-    case TokenExpired = 200002
-    case SignUpGeneric = 100000
-    case SignUpNoInvites = 100011
-    case SignUpNoCodeInvites = 100012
-    case SignUpNoValidCode = 100013
-    case SignUpInvalidEmail = 100001
-    case SignUpCurrenPasswordInvalid = 100003
-    case CancelAccountError = 100005
-    case SignInInvalidCredentials = 200001
-    case CreateStoreError = 400000
-    case GetStoresError = 400001
-    case NameStoreAlreadyUsed = 400005
-    case GetColorPalettesError = 500001
-    case OrderItemsOOSCart = 1200001
-    case RedeemPointsNotEnough = 1400002
-    case AddCartStockError = 600001
-    case NoEmailForgotPassword = 2100003
-    case InvalidCoupon = 1600001
-    case NoInternet = -1009
-    case InvalidEmail = 300006
-    case ExpiredCoupon = 100004
-    case OneTimeCouponAlreadyUsed = 1600007
-    case NeedToEnterAny = 2600000
-    case CodeAlreadyUsed = 2600001
-    case emailAlreadyUsed = 2600002
-    case InviteSearchingCodeError = 2600003
-    case InviteSearchinhEmailError = 2600004
-    case InviteEmailError = 2600005
-    case InviteSearchingOldEmailError = 2600006
-    case InviteExistingEmailError = 2600007
+    case success = 200
+    case successData = 201
+    case NotRegistered = -2
+    case InvalidPw = -1
+    case error = 403
+    case notFound = 404
+    case badRequest = 400
+    case tokenNotFound = 402
+    case connectionFailed = 50
+    case noInternet = 0
    
     
 }
@@ -84,125 +62,37 @@ class HelloOmanError {
     {
         self.code = errorCode
         switch self.code {
-        case .ComingSoon:
-            self.title = "Opps!"
-            self.detail = "Feature coming soon!"
+        case .NotRegistered:
+            self.title = "Oops!"
+            self.detail = "Not a registered user."
             break
-        case .ContactNoEmail:
+        case .InvalidPw:
             self.title = "Error"
-            self.detail = "Contact doesn't have an email. Code:3"
+            self.detail = "Invalid Password."
             break
         case .Default:
             self.title = "Error"
             self.detail = "No Error Code Returned."
             break
-        case .TokenExpired:
+        case .error:
             self.title = "Error"
-            self.detail = "Token expired. Error Code 200002"
+            self.detail = "Generic error."
             break
-        case .SignUpGeneric:
+        case .notFound:
             self.title = "Error"
-            self.detail = "Generic signup error. Error Code 100000."
+            self.detail = "Couldn't retrieve data."
             break
-        case .SignUpInvalidEmail:
+        case .badRequest:
             self.title = "Error"
-            self.detail = "Invalid email. Error Code 100001."
+            self.detail = "Couldn't retrieve data."
             break
-        case .SignUpCurrenPasswordInvalid:
+        case .connectionFailed:
             self.title = "Error"
-            self.detail = "Invalid current password. Error Code 100003."
+            self.detail = "Connection Failed. Please try again."
             break
-        case .CancelAccountError:
+        case .noInternet:
             self.title = "Error"
-            self.detail = "Cancel account error. Error Code 100005."
-            break
-        case .SignInInvalidCredentials:
-            self.title = "Error"
-            self.detail = "Invalid Credentials. Error Code 200001."
-            break
-        case .NameStoreAlreadyUsed:
-            self.title = "Error"
-            self.detail = "Store name already used. Error Code 400005."
-            break
-        case .GetColorPalettesError:
-            self.title = "Error"
-            self.detail = "Couldn't retrieve color palettes. Error Code 500001."
-            break
-        case .OrderItemsOOSCart:
-            self.title = "Error"
-            self.detail = "Items out of stock. Error Code 1200001."
-            break
-        case .RedeemPointsNotEnough:
-            self.title = "Error"
-            self.detail = "Low redeem points. Error Code 1400002."
-            break
-        case .AddCartStockError:
-            self.title = "Error"
-            self.detail = "Add cart error. Error Code 600001."
-            break
-        case .NoEmailForgotPassword:
-            self.title = "Error"
-            self.detail = "Email forgot error. Error Code \(ErrorCode.NoEmailForgotPassword.rawValue)."
-            break
-        case .InvalidCoupon:
-            self.title = "Error"
-            self.detail = "Invalid Cupon. Error Code 1600001."
-            break
-        case .NoInternet:
-            self.title = "Error"
-            self.detail = "No internet connection."
-            break
-        case .InvalidEmail:
-            self.title = "Error"
-            self.detail = "Invalid Email."
-            break
-        case .ExpiredCoupon:
-            self.title = "Error"
-            self.detail = "Invalid Cupon."
-            break
-        case .OneTimeCouponAlreadyUsed:
-            self.title = "Error"
-            self.detail = "One time Coupon already used."
-            break
-        case .SignUpNoCodeInvites:
-            self.title = "Error"
-            self.detail = "Error while searching code"
-            break
-        case .SignUpNoValidCode:
-            self.title = "Error"
-            self.detail = "Not a valid access code"
-            break
-        case .NeedToEnterAny:
-            self.title = "Error"
-            self.detail = "Only one of code or email must be sent"
-            break
-        case .CodeAlreadyUsed:
-            self.title = "Error"
-            self.detail = "Code invite validation is already tried"
-            break
-        case .emailAlreadyUsed:
-            self.title = "Error"
-            self.detail = "Email invite validation is already tried"
-            break
-        case .InviteSearchingCodeError:
-            self.title = "Error"
-            self.detail = "Error while searching code"
-            break
-        case .InviteSearchinhEmailError:
-            self.title = "Error"
-            self.detail = "Error while searching email"
-            break
-        case .InviteEmailError:
-            self.title = "Error"
-            self.detail = "Invalid Email"
-            break
-        case .InviteSearchingOldEmailError:
-            self.title = "Error"
-            self.detail = "Error while searching for existing user"
-            break
-        case .InviteExistingEmailError:
-            self.title = "Error"
-            self.detail = "A user with that email already exists"
+            self.detail = "No Internet."
             break
         default:
             self.title = "Error"

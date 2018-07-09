@@ -41,36 +41,49 @@
                             <inset key="imageEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="More" image="forwardBtn"/>
                         </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmz-wb-9Xl">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmz-wb-9Xl">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </button>
+                        <label hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmy-3O-ww3">
+                            <rect key="frame" x="10" y="5" width="36.5" height="18"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                            <color key="textColor" red="0.15686274510000001" green="0.1764705882" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="wmz-wb-9Xl" firstAttribute="leading" secondItem="rC5-Mp-60z" secondAttribute="leading" id="6cb-ct-evH"/>
+                        <constraint firstAttribute="trailing" secondItem="wmz-wb-9Xl" secondAttribute="trailing" id="7ES-LS-fyZ"/>
                         <constraint firstAttribute="trailing" secondItem="auG-4r-N4R" secondAttribute="trailing" id="Ea4-Hh-XH7"/>
+                        <constraint firstItem="Kmy-3O-ww3" firstAttribute="leading" secondItem="rC5-Mp-60z" secondAttribute="leading" constant="10" id="GD0-qS-eLB"/>
+                        <constraint firstItem="Kmy-3O-ww3" firstAttribute="top" secondItem="rC5-Mp-60z" secondAttribute="top" constant="5" id="KMe-SI-QDy"/>
                         <constraint firstItem="PJA-Zw-bf9" firstAttribute="centerY" secondItem="rC5-Mp-60z" secondAttribute="centerY" id="LxP-LY-n5v"/>
                         <constraint firstItem="PJA-Zw-bf9" firstAttribute="centerX" secondItem="rC5-Mp-60z" secondAttribute="centerX" id="NTn-9A-txq"/>
+                        <constraint firstAttribute="height" constant="30" id="R7X-eQ-TBd"/>
+                        <constraint firstItem="wmz-wb-9Xl" firstAttribute="top" secondItem="rC5-Mp-60z" secondAttribute="top" id="ZN1-Ve-jCt"/>
                         <constraint firstItem="auG-4r-N4R" firstAttribute="top" secondItem="rC5-Mp-60z" secondAttribute="top" id="sKA-Ou-1YF"/>
                     </constraints>
                 </view>
             </subviews>
             <constraints>
                 <constraint firstItem="rC5-Mp-60z" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="8O1-qz-dCd"/>
-                <constraint firstAttribute="bottom" secondItem="rC5-Mp-60z" secondAttribute="bottom" id="ViJ-4z-A1f"/>
-                <constraint firstItem="rC5-Mp-60z" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="YF7-gM-hVj"/>
-                <constraint firstAttribute="bottom" secondItem="rC5-Mp-60z" secondAttribute="bottom" id="YPV-7D-Kwf"/>
                 <constraint firstAttribute="trailing" secondItem="rC5-Mp-60z" secondAttribute="trailing" id="bf1-tu-6iO"/>
                 <constraint firstItem="rC5-Mp-60z" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="kvk-am-GTE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <connections>
+                <outlet property="BtnleadingConstraint" destination="6cb-ct-evH" id="H16-uM-9vS"/>
+                <outlet property="BtntailingConstraint" destination="Ea4-Hh-XH7" id="V9u-l9-3vE"/>
                 <outlet property="btnForPlan" destination="wmz-wb-9Xl" id="t3f-Z1-3ag"/>
                 <outlet property="btnMore" destination="auG-4r-N4R" id="QAt-hk-lxc"/>
                 <outlet property="lblDynamic" destination="PJA-Zw-bf9" id="A8J-hh-10v"/>
+                <outlet property="lblSideTitle" destination="Kmy-3O-ww3" id="5If-sb-IFn"/>
                 <outlet property="leadingConstraint" destination="8O1-qz-dCd" id="P3s-mE-teW"/>
                 <outlet property="tailingConstraint" destination="bf1-tu-6iO" id="Ofd-M5-XU0"/>
+                <outlet property="viewForContent" destination="rC5-Mp-60z" id="uiQ-cK-XnN"/>
             </connections>
         </collectionReusableView>
     </objects>

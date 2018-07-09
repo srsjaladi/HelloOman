@@ -9,9 +9,12 @@
 import UIKit
 import FBSDKLoginKit
 import GoogleSignIn
+import GoogleMobileAds
+
 
 
 private let YOUR_CLIENT_ID = "651320784939-idkntamsfsd19kmue6iki2qkdjbnut0u.apps.googleusercontent.com"
+private let YOUR_ADMOB_APP_ID = "ca-app-pub-7864413541660030~4751525194"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         GIDSignIn.sharedInstance().clientID = YOUR_CLIENT_ID
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        GADMobileAds.configure(withApplicationID: "YOUR_ADMOB_APP_ID")
+
         CurrentUser.sharedInstance.load()
         
         return true
