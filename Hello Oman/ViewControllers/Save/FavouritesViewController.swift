@@ -220,4 +220,15 @@ class FavouritesViewController: UIViewController,CAPSPageMenuDelegate,SavedPacka
         self.navigationController?.pushViewController(detailPackgesVC, animated: true)
     }
     
+    func gotoPlanRequestPage(subject : String , image: String)  {
+        
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let reqVC: RequestPlanViewController = homeStoryboard.instantiateViewController(withIdentifier: "RequestPlanViewController") as! RequestPlanViewController
+        reqVC.strSubject = subject
+        reqVC.strImage = image
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(reqVC, animated: true)
+    }
+    
 }

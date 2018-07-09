@@ -42,6 +42,11 @@ let getIFavoriteForTravelIdeas = "update_favourite_travel_ideas.php"
 let getRequestForPlan = "send_enquiry.php"
 let getbrandImages = "banner_ads.php"
 
+let getFilterPackges = "get_filtered_packages.php"
+let getFilterFromOther = "get_filtered_search_packages.php"
+
+
+
 
 
 

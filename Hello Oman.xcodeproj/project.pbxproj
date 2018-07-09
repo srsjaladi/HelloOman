@@ -63,6 +63,7 @@
 		55CBD4C120F3B669002517BB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CBD4BD20F3B669002517BB /* CoreGraphics.framework */; };
 		55CBD4C220F3B669002517BB /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CBD4BE20F3B669002517BB /* AVKit.framework */; };
 		55CBD4C320F3B669002517BB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CBD4BF20F3B669002517BB /* AVFoundation.framework */; };
+		55CBD4C520F3E05F002517BB /* FilterResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CBD4C420F3E05F002517BB /* FilterResultsViewController.swift */; };
 		55D3BC2120EE86A200A0E92A /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3BC2020EE86A200A0E92A /* HomeModel.swift */; };
 		55D955C320F0BC60003071DF /* AQPhotoPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55D955C020F0BC5F003071DF /* AQPhotoPickerView.xib */; };
 		55D955C420F0BC60003071DF /* AQPhotoPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D955C220F0BC5F003071DF /* AQPhotoPickerView.m */; };
@@ -172,6 +173,7 @@
 		55CBD4BD20F3B669002517BB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		55CBD4BE20F3B669002517BB /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		55CBD4BF20F3B669002517BB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		55CBD4C420F3E05F002517BB /* FilterResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsViewController.swift; sourceTree = "<group>"; };
 		55D3BC2020EE86A200A0E92A /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		55D955C020F0BC5F003071DF /* AQPhotoPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AQPhotoPickerView.xib; sourceTree = "<group>"; };
 		55D955C120F0BC5F003071DF /* AQPhotoPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQPhotoPickerView.h; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				55BCA53820F124ED00611A71 /* MorePackagesViewController.swift */,
 				55BCA53A20F1257B00611A71 /* MoreTravelIdeasViewController.swift */,
 				55E4B3A920F242B8007A8B6D /* FilterPackgesViewController.swift */,
+				55CBD4C420F3E05F002517BB /* FilterResultsViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				55E4B3A020F207F7007A8B6D /* DetailedTravelItemsModel.swift in Sources */,
 				55F5CB6C20ED241300265B52 /* FakeLaunchScreenVC.swift in Sources */,
 				552EB7BC20E89E0600BB6B90 /* CurrentUser+Manager.swift in Sources */,
+				55CBD4C520F3E05F002517BB /* FilterResultsViewController.swift in Sources */,
 				55E4B39220F1ED56007A8B6D /* DetailsPackagesViewController.swift in Sources */,
 				55404BE720EB7D210071AD9D /* SavedTravelIdeasViewController.swift in Sources */,
 				552EB7B620E89A0D00BB6B90 /* ConstantsAPI.swift in Sources */,

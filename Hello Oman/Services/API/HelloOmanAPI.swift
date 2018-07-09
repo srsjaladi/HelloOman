@@ -1061,6 +1061,98 @@ class HelloOmanAPI {
         }
     }
     
+    func getAllFilterPackages(
+        _ userId: String,
+        agentId: String,
+        filters: String,
+        handler: @escaping (_ response: AnyObject?, _ error: HelloOmanError?) -> Void
+        )
+    {
+        let parameters: [String: Any] = [
+            "user_id": userId  as String,
+            "agent_id": agentId as String,
+            "filters": filters as String
+        ]
+        
+        self.alamoFireManager.request(baseUrl+getFilterPackges, method: .post, parameters: parameters).responseJSON { response in
+            
+            let success = self.validateResponseSuccess(response)
+            
+            if (success)
+            {
+                let objectList = response.result.value as! [String : AnyObject]
+                let packgesData = PackagesModelList.deserialize(objectList)
+                handler(packgesData as AnyObject,nil)
+            }
+            else
+            {
+                if let value = response.result.value, let error = HelloOmanError(object: value as AnyObject)
+                {
+                    handler(nil, error)
+                }
+                else if let errorCode = response.response?.statusCode, errorCode == ErrorCode.noInternet.rawValue
+                {
+                    let error = HelloOmanError(errorCode: ErrorCode.noInternet)
+                    handler(nil, error)
+                    
+                } else {
+                    let error = HelloOmanError()
+                    error.detail = "filter packages Details server error"
+                    handler(nil, error)
+                }
+            }
+            
+        }
+    }
+    
+    func getAllSearchFilterPackages(
+        _ userId: String,
+        agentId: String,
+        search: String,
+        type : String,
+        filters: String,
+        handler: @escaping (_ response: AnyObject?, _ error: HelloOmanError?) -> Void
+        )
+    {
+        let parameters: [String: Any] = [
+            "user_id": userId  as String,
+            "agent_id": agentId as String,
+            "filters": filters as String,
+            "search" :search as String,
+            "type": type as String
+        ]
+        
+        self.alamoFireManager.request(baseUrl+getFilterFromOther, method: .post, parameters: parameters).responseJSON { response in
+            
+            let success = self.validateResponseSuccess(response)
+            
+            if (success)
+            {
+                let objectList = response.result.value as! [String : AnyObject]
+                let packgesData = PackagesModelList.deserialize(objectList)
+                handler(packgesData as AnyObject,nil)
+            }
+            else
+            {
+                if let value = response.result.value, let error = HelloOmanError(object: value as AnyObject)
+                {
+                    handler(nil, error)
+                }
+                else if let errorCode = response.response?.statusCode, errorCode == ErrorCode.noInternet.rawValue
+                {
+                    let error = HelloOmanError(errorCode: ErrorCode.noInternet)
+                    handler(nil, error)
+                    
+                } else {
+                    let error = HelloOmanError()
+                    error.detail = "search Filter packages Details server error"
+                    handler(nil, error)
+                }
+            }
+            
+        }
+    }
+    
     
 }
 

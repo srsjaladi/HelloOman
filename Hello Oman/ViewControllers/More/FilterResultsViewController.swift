@@ -1,8 +1,8 @@
 //
-//  MorePackagesViewController.swift
+//  FilterResultsViewController.swift
 //  Hello Oman
 //
-//  Created by Sivaramsingh on 07/07/18.
+//  Created by Sivaramsingh on 09/07/18.
 //  Copyright © 2018 Self. All rights reserved.
 //
 
@@ -11,29 +11,24 @@ import MBProgressHUD
 private let kReuseTableCellID = "reuseTableCellID"
 private let kBtnMoreTag = 1700
 
-class MorePackagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
-
+class FilterResultsViewController: UIViewController , UITableViewDelegate, UITableViewDataSource  {
+    
     @IBOutlet weak var tblView: UITableView!
-   var packgesDetails : PackagesModelList?
-    var strTitle : String = ""
-    var agentId : String = ""
-    var userId : String = ""
-    var type: String = "0"
-    var search : String = ""
+    var packgesDetails : PackagesModelList?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
         self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
-         self.tblView.register(UINib(nibName: "\(ListViewTableViewCell.self)", bundle: nil), forCellReuseIdentifier: kReuseTableCellID)
+        self.tblView.register(UINib(nibName: "\(ListViewTableViewCell.self)", bundle: nil), forCellReuseIdentifier: kReuseTableCellID)
         
-        self.title = strTitle
+        self.title = "Filter Results"
         
-        self.getListofMorePackages(userID: self.userId, agentId: self.agentId, type: self.type,search: self.search)
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,17 +40,6 @@ class MorePackagesViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
-    @IBAction func btnFilterClicked(_ sender: Any) {
-        
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let FilterPackgesVC: FilterPackgesViewController = storyboard.instantiateViewController(withIdentifier: "FilterPackgesViewController") as! FilterPackgesViewController
-        
-        FilterPackgesVC.search = self.search
-        FilterPackgesVC.type = self.type
-        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
-        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
-        self.navigationController?.pushViewController(FilterPackgesVC, animated: true)
-    }
     
     // MARK: - TableView Protocol
     
@@ -84,7 +68,7 @@ class MorePackagesViewController: UIViewController, UITableViewDelegate, UITable
         }
         else
         {
-             return 0
+            return 0
         }
         
         
@@ -152,7 +136,7 @@ class MorePackagesViewController: UIViewController, UITableViewDelegate, UITable
         //RequestPlanViewController
         let modelObj = self.packgesDetails?.packagesModelList[(sender.tag - 1)]
         let imageObj = modelObj?.arrPackageImages[0]
-      
+        
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let requestPlanVC: RequestPlanViewController = storyboard.instantiateViewController(withIdentifier: "RequestPlanViewController") as! RequestPlanViewController
         requestPlanVC.strImage = (modelObj?.packageTitle)!
@@ -164,34 +148,5 @@ class MorePackagesViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
-    func getListofMorePackages(userID : String, agentId:String, type:String,search: String)  {
-        
-        MBProgressHUD.showHUDAddedGlobal()
-        HelloOmanAPI.sharedInstance.getAllPackagesFromMore(userID, agentId: agentId, type: type,search:search, handler: { (response, error) in
-            if let error: HelloOmanError = error {
-                MBProgressHUD.dismissGlobalHUD()
-                switch error.code {
-                case .Default:
-                    self.showErrorAlert(error)
-                    break
-                default:
-                    self.showErrorAlert(error)
-                    break
-                }
-            }
-            else
-            {
-                MBProgressHUD.dismissGlobalHUD()
-                if let packagesModelList = response as? PackagesModelList {
-                    self.packgesDetails = packagesModelList
-                    print("total: \(self.packgesDetails!.packagesModelList.count)")
-                }
-                self.tblView.reloadData()
-            }
-        })
-        
-    }
     
-   
-
 }

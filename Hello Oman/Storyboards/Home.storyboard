@@ -1554,9 +1554,9 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUy-q0-Er9">
-                                                <rect key="frame" x="8" y="32.5" width="29" height="14"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUy-q0-Er9">
+                                                <rect key="frame" x="8" y="33" width="327" height="37"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1565,8 +1565,10 @@
                                         <constraints>
                                             <constraint firstItem="hUy-q0-Er9" firstAttribute="top" secondItem="aN6-Qm-H9Y" secondAttribute="bottom" constant="8" id="Cmm-tX-LWZ"/>
                                             <constraint firstItem="aN6-Qm-H9Y" firstAttribute="leading" secondItem="bbZ-35-uE9" secondAttribute="leading" constant="8" id="FQ5-rZ-6EN"/>
+                                            <constraint firstAttribute="bottom" secondItem="hUy-q0-Er9" secondAttribute="bottom" id="FfM-cn-a2W"/>
                                             <constraint firstItem="hUy-q0-Er9" firstAttribute="leading" secondItem="bbZ-35-uE9" secondAttribute="leading" constant="8" id="Tbs-TI-zve"/>
                                             <constraint firstAttribute="height" constant="70" id="ZiY-YT-34H"/>
+                                            <constraint firstAttribute="trailing" secondItem="hUy-q0-Er9" secondAttribute="trailing" constant="8" id="uDf-U6-Qaa"/>
                                             <constraint firstItem="aN6-Qm-H9Y" firstAttribute="top" secondItem="bbZ-35-uE9" secondAttribute="top" constant="8" id="utl-dI-dD8"/>
                                         </constraints>
                                     </view>
@@ -1938,6 +1940,12 @@
                                 <action selector="btnBackClicked:" destination="3cs-Zt-s2N" id="JEs-Kd-kf0"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="FilterIcon" id="NX0-gl-Hqh">
+                            <color key="tintColor" red="0.15686274510000001" green="0.1764705882" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="btnFilterClicked:" destination="3cs-Zt-s2N" id="FKU-b1-23E"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
@@ -2174,6 +2182,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sXD-Az-32j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-527.20000000000005" y="2428.3358320839584"/>
+        </scene>
+        <!--Filter Results-->
+        <scene sceneID="8Js-nv-aLd">
+            <objects>
+                <viewController storyboardIdentifier="FilterResultsViewController" title="Filter Results" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ABt-cU-wOr" customClass="FilterResultsViewController" customModule="Hello_Oman" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ElF-OF-M6G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWk-Dt-cCo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Dm-NK-Igu">
+                                        <rect key="frame" x="10" y="10" width="355" height="583"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="ABt-cU-wOr" id="QFw-v1-v1d"/>
+                                            <outlet property="delegate" destination="ABt-cU-wOr" id="Ym6-BK-ab1"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.90196078430000004" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="0Dm-NK-Igu" firstAttribute="leading" secondItem="DWk-Dt-cCo" secondAttribute="leading" constant="10" id="7gi-J1-hjz"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Dm-NK-Igu" secondAttribute="trailing" constant="10" id="ASF-e8-dMM"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Dm-NK-Igu" secondAttribute="bottom" constant="10" id="FIo-sZ-LWC"/>
+                                    <constraint firstItem="0Dm-NK-Igu" firstAttribute="top" secondItem="DWk-Dt-cCo" secondAttribute="top" constant="10" id="c9I-ti-k17"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DWk-Dt-cCo" firstAttribute="trailing" secondItem="ElF-OF-M6G" secondAttribute="trailing" id="13y-Eg-Gxd"/>
+                            <constraint firstItem="DWk-Dt-cCo" firstAttribute="bottom" secondItem="ElF-OF-M6G" secondAttribute="bottom" id="9So-Cm-jtG"/>
+                            <constraint firstItem="DWk-Dt-cCo" firstAttribute="top" secondItem="ElF-OF-M6G" secondAttribute="top" id="I8X-ek-AVY"/>
+                            <constraint firstItem="DWk-Dt-cCo" firstAttribute="leading" secondItem="ElF-OF-M6G" secondAttribute="leading" id="idK-PT-ozp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Lu-3g-XUJ"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Filter Results" id="10u-qA-sab">
+                        <barButtonItem key="leftBarButtonItem" image="BackArrow" id="MS0-jo-EE2">
+                            <color key="tintColor" red="0.15686274510000001" green="0.1764705882" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="btnBackClicked:" destination="ABt-cU-wOr" id="Mnr-IN-HY0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="tblView" destination="0Dm-NK-Igu" id="1rR-fi-akJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E1c-F9-wcc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060" y="1558"/>
         </scene>
     </scenes>
     <resources>

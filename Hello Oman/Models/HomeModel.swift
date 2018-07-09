@@ -120,6 +120,7 @@ struct ThemeModel
 {
     var id = ""
     var theme = ""
+    var selected : String = "false"
     
     init() {
         
@@ -131,6 +132,7 @@ struct ThemeModel
         
         self.id = json["id"].stringValue
         self.theme = json["theme"].stringValue
+        self.selected = "false"
       
     }
 }
