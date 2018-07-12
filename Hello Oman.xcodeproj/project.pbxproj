@@ -112,6 +112,7 @@
 		55F876A420EFE92C0075167E /* PackagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F876A320EFE92C0075167E /* PackagesModel.swift */; };
 		55F876A620EFEB0B0075167E /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F876A520EFEB0B0075167E /* ImageModel.swift */; };
 		55F876A820EFF1390075167E /* PackagesModelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F876A720EFF1390075167E /* PackagesModelList.swift */; };
+		55F96EDA20F5215E00751224 /* UpdatedAgentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F96ED920F5215E00751224 /* UpdatedAgentInfo.swift */; };
 		9003D6DF542A61B5CE17111E /* Pods_Hello_Oman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C0609E585687D25D572CC0 /* Pods_Hello_Oman.framework */; };
 /* End PBXBuildFile section */
 
@@ -228,6 +229,7 @@
 		55F876A320EFE92C0075167E /* PackagesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackagesModel.swift; sourceTree = "<group>"; };
 		55F876A520EFEB0B0075167E /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		55F876A720EFF1390075167E /* PackagesModelList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackagesModelList.swift; sourceTree = "<group>"; };
+		55F96ED920F5215E00751224 /* UpdatedAgentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedAgentInfo.swift; sourceTree = "<group>"; };
 		68338F650E49C2729B121343 /* Pods-Hello Oman.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hello Oman.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hello Oman/Pods-Hello Oman.debug.xcconfig"; sourceTree = "<group>"; };
 		E4C0609E585687D25D572CC0 /* Pods_Hello_Oman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hello_Oman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -468,6 +470,7 @@
 				55F10C5420F0E783006DCB87 /* CategoryModel.swift */,
 				55E4B39D20F1FFB2007A8B6D /* ItineraryModel.swift */,
 				55E4B39F20F207F7007A8B6D /* DetailedTravelItemsModel.swift */,
+				55F96ED920F5215E00751224 /* UpdatedAgentInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				55BCA53B20F1257B00611A71 /* MoreTravelIdeasViewController.swift in Sources */,
 				55E4B39E20F1FFB2007A8B6D /* ItineraryModel.swift in Sources */,
 				55F5AEF620DFFC750076CC0F /* SignInViewController.swift in Sources */,
+				55F96EDA20F5215E00751224 /* UpdatedAgentInfo.swift in Sources */,
 				552EB7C320E8C1F800BB6B90 /* UIViewController+HelloOmanHelper.swift in Sources */,
 				55F876A620EFEB0B0075167E /* ImageModel.swift in Sources */,
 				55E4B39020F1D4A4007A8B6D /* TravelIdeasDetailsViewController.swift in Sources */,

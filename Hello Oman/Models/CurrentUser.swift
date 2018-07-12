@@ -38,8 +38,13 @@ class CurrentUser {
         guard let agent = data[Keys.Agent.rawValue] as? [String: AnyObject] else {
             return
         }
-        self.user?.agentInfo = AgentInfo(object: agent as AnyObject)
-        
+         let Objt =   UpdatedAgentInfo(object: agent as AnyObject)
+         self.user?.agentInfo.agent_id = Objt.agent_id
+        self.user?.agentInfo.agent_name = Objt.agent_name
+        self.user?.agentInfo.agent_email = Objt.agent_email
+        self.user?.agentInfo.agent_phone = Objt.agent_phone
+        self.user?.agentInfo.agent_unique_id = Objt.agent_unique_id
+        self.user?.agentInfo.agent_image = Objt.agent_image
     }
     
     func save() {

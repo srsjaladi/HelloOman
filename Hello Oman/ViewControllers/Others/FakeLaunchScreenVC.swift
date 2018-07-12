@@ -12,11 +12,23 @@ import MBProgressHUD
 
 class FakeLaunchScreenVC: UIViewController {
     
+    @IBOutlet weak var agentImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.startUpRequests()
-    
+        
+        if CurrentUser.sharedInstance.user != nil {
+            if let imageURL = URL(string: (CurrentUser.sharedInstance.user?.agentInfo.agent_image)!)
+            {
+                self.agentImage.af_setImage(
+                    withURL: imageURL,
+                    placeholderImage: UIImage(named: "DefaultImage"),
+                    filter: nil,
+                    imageTransition: .crossDissolve(0.3)
+                )
+            }
+        }
     }
     
     fileprivate func startUpRequests()
@@ -26,8 +38,21 @@ class FakeLaunchScreenVC: UIViewController {
             
             if user != nil
             {
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.goToHome(true, afterLaunchScreen: true)
+                if let imageURL = URL(string: (CurrentUser.sharedInstance.user?.agentInfo.agent_image)!)
+                {
+                    self.agentImage.af_setImage(
+                        withURL: imageURL,
+                        placeholderImage: UIImage(named: "DefaultImage"),
+                        filter: nil,
+                        imageTransition: .crossDissolve(0.3)
+                    )
+                }
+                let delayTime = DispatchTime.now() + Double(Int64(0.3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.goToHome(true, afterLaunchScreen: true)
+                }
+                
             }
             else
             {

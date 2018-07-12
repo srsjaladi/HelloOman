@@ -11,6 +11,8 @@ import MBProgressHUD
 import GoogleMobileAds
 private let kTableHeaderHeight = 216.0
 private let kReuseTableCellID = "reuseTableCellID"
+private let KButtonForCallTag = 330
+private let KButtonForPlanTag = 550
 class TravelIdeasDetailsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource,GADBannerViewDelegate {
 
 
@@ -301,7 +303,11 @@ class TravelIdeasDetailsViewController: UIViewController,UITableViewDelegate, UI
         cell.lblTimeDays.text = String(format:"\(num!) Days/\(num! - 1) Nights")
         let value = String(format: "OMR \((packgesObj.packagePrice))/head")
         cell.lblOMR.text = value
-        
+         cell.btnCall.tag = ((KButtonForPlanTag * indexPath.section) + indexPath.row + 1)
+        cell.btnCall.addTarget(self, action: #selector(TravelIdeasDetailsViewController.btnCallClicked(sender:)), for: .touchUpInside)
+       
+        cell.btnPlan.tag = ((KButtonForPlanTag * indexPath.section) + indexPath.row + 1)
+        cell.btnPlan.addTarget(self, action: #selector(TravelIdeasDetailsViewController.btnForPlanClicked(sender:)), for: .touchUpInside)
         return cell
         
         
@@ -318,6 +324,39 @@ class TravelIdeasDetailsViewController: UIViewController,UITableViewDelegate, UI
         self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
         self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
         self.navigationController?.pushViewController(detailPackgesVC, animated: true)
+    }
+    
+    @objc func btnCallClicked(sender: AnyObject) {
+        
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let agentDetailsVC = homeStoryboard.instantiateViewController(withIdentifier: "CallToAgentViewController") as! CallToAgentViewController
+        self.present(agentDetailsVC, animated: false, completion: nil)
+    }
+    
+    @objc func btnForPlanClicked(sender: AnyObject) {
+        
+        let btnForPlan = self.view.viewWithTag(sender.tag) as? UIButton
+        btnForPlan?.isSelected = !(btnForPlan?.isSelected)!
+        
+        let Numsectionvalue = (sender.tag/KButtonForPlanTag)
+        let Numrowvalue = (sender.tag%KButtonForPlanTag)
+        print(sender.tag/KButtonForPlanTag)
+        print(sender.tag%KButtonForPlanTag)
+        //RequestPlanViewController
+        let detaildObj = self.innerTravelItemsList[Numsectionvalue].packagesModelList
+        let packgesObj = detaildObj[(Numrowvalue - 1) ]
+        var imageObj = ImageModel()
+        if packgesObj.arrPackageImages.count > 0 {
+            imageObj = packgesObj.arrPackageImages[0]
+        }
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let requestPlanVC: RequestPlanViewController = storyboard.instantiateViewController(withIdentifier: "RequestPlanViewController") as! RequestPlanViewController
+        requestPlanVC.strImage = (packgesObj.packageTitle)
+        requestPlanVC.strSubject = (imageObj.image_URL)
+        self.navigationController?.navigationBar.barTintColor  = UIColor.oldPinkColor()
+        self.navigationController!.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.pushViewController(requestPlanVC, animated: true)
+        
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

@@ -21,11 +21,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashImg" translatesAutoresizingMaskIntoConstraints="NO" id="8gn-Dd-Led">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppImage" translatesAutoresizingMaskIntoConstraints="NO" id="vsM-lH-oSp">
-                                <rect key="frame" x="146.5" y="70" width="81" height="84"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vsM-lH-oSp">
+                                <rect key="frame" x="62" y="70" width="250" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="J3P-JG-jJJ"/>
-                                    <constraint firstAttribute="width" constant="81" id="srC-mQ-xCA"/>
+                                    <constraint firstAttribute="width" constant="250" id="srC-mQ-xCA"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -40,6 +40,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IDX-fV-HEz"/>
                     </view>
+                    <connections>
+                        <outlet property="agentImage" destination="vsM-lH-oSp" id="ZKQ-Ob-bud"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VGh-Zk-Rfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -47,7 +50,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AppImage" width="480" height="458"/>
         <image name="SplashImg" width="320" height="561"/>
     </resources>
 </document>

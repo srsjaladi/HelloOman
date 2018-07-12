@@ -44,7 +44,6 @@ class MyAccountViewController: UIViewController,UITextFieldDelegate,AQPhotoPicke
         self.imgProfile.layer.masksToBounds = true
         self.imgProfile.layer.cornerRadius = self.imgProfile.layer.frame.size.width/2
         
-        
          self.txtfldName.addTarget(self, action: #selector(MyAccountViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
           self.txtfldEmail.addTarget(self, action: #selector(MyAccountViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
           self.txtfldMobile.addTarget(self, action: #selector(MyAccountViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
@@ -112,17 +111,26 @@ class MyAccountViewController: UIViewController,UITextFieldDelegate,AQPhotoPicke
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if textField == self.txtfldTravelAgentCode {
-            var txtAfterUpdate: NSString = textField.text! as NSString
-            txtAfterUpdate = txtAfterUpdate.replacingCharacters(in: range, with: string) as NSString
+        var txtAfterUpdate: NSString = textField.text! as NSString
+        txtAfterUpdate = txtAfterUpdate.replacingCharacters(in: range, with: string) as NSString
+
+        if textField == self.txtfldMobile
+        {
+            if (txtAfterUpdate.length > 8)
+            {
+                return false
+            }
+        }
+        
+          if textField == self.txtfldTravelAgentCode {
             
-            if(txtAfterUpdate.length >= 9)
+            if (txtAfterUpdate.length == 9)
             {
                 self.getAgentDetails(uniqueId: txtAfterUpdate as String)
             }
-            else
+            else if (txtAfterUpdate.length > 9)
             {
-                self.isTravlAgentCodeValid = false
+                return false
             }
         }
        
@@ -169,7 +177,7 @@ class MyAccountViewController: UIViewController,UITextFieldDelegate,AQPhotoPicke
             {
                 self.isTravlAgentCodeValid = false
             }
-            else{
+            else {
                 self.isTravlAgentCodeValid = true
             }
             self.validateForm()
@@ -196,7 +204,7 @@ class MyAccountViewController: UIViewController,UITextFieldDelegate,AQPhotoPicke
         
         if (isNameValid && isEmailValid && isPasswordValid && isPasswordValid)
         {
-            if isTravlAgentCodeValid
+            if isTravlAgentCodeValid && (self.txtfldTravelAgentCode.text?.count == 9)
             {
                 self.btnUpload.isEnabled = true
                 self.btnUpload.setTitleColor(UIColor.warmGrey(), for: .normal)
@@ -264,8 +272,17 @@ class MyAccountViewController: UIViewController,UITextFieldDelegate,AQPhotoPicke
             {
                 MBProgressHUD.dismissGlobalHUD()
                 if responseCode == "1"
-                {
-                    self.showAlert("Success !!!", message: response!)
+                {                    
+                    let alert = UIAlertController(title: "Success !!!" , message: "", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title:
+                        "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                            let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                            let agentDetailsVC = homeStoryboard.instantiateViewController(withIdentifier: "AgentDetailsViewController") as! AgentDetailsViewController
+                            self.present(agentDetailsVC, animated: true, completion: nil)
+                    }))
+                    
+                    self.present(alert, animated: true, completion: nil)
                 }
                 else
                 {

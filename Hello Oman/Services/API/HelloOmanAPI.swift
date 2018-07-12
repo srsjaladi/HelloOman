@@ -410,6 +410,17 @@ class HelloOmanAPI {
             if (success)
             {
                 let responseText = JSON(response.result.value as AnyObject)
+                
+                let agentObj = UpdatedAgentInfo(object: responseText["Agent_Info"].object as AnyObject)
+                print(agentObj)
+                
+                CurrentUser.sharedInstance.user?.agentInfo.agent_id = agentObj.agent_id
+                CurrentUser.sharedInstance.user?.agentInfo.agent_name = agentObj.agent_name
+                CurrentUser.sharedInstance.user?.agentInfo.agent_email = agentObj.agent_email
+                CurrentUser.sharedInstance.user?.agentInfo.agent_phone = agentObj.agent_phone
+                CurrentUser.sharedInstance.user?.agentInfo.agent_unique_id = agentObj.agent_unique_id
+                CurrentUser.sharedInstance.user?.agentInfo.agent_image = agentObj.agent_image
+                
                 let responseObject = JSON(responseText["Response"].object as AnyObject)
                 print(responseObject)
                 

@@ -95,6 +95,7 @@ UIPickerViewDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-YYYY"
         self.txtfldDate.text = dateFormatter.string(from: Date())
+        isDaysValid = true
        
     }
     
@@ -236,14 +237,16 @@ UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if pickerView == personsPicker {
+            self.isPersonsValid = true
            self.txtfldNoOfPersons.text = self.arrForPersons[row]
         }
         else if pickerView == daysPicker
-        {
+        {self.isDateValid = true
             self.txtfldNoOfDays.text = self.arrForDays[row]
         }
         else
         {
+            self.isBudgetValid = true
             self.txtfldBudget.text = self.arrForBudgets[row]
         }
     }
