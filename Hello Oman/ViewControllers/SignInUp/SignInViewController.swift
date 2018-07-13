@@ -17,7 +17,7 @@ class SignInViewController: UIViewController,GIDSignInDelegate,GIDSignInUIDelega
     @IBOutlet weak var btnSignin: UIButton!
     @IBOutlet weak var txtfldUserName: UITextField!
     @IBOutlet weak var txtfldPassword: UITextField!
-    
+    fileprivate var defaults: UserDefaults = UserDefaults.standard
     private var isEmailValid = false
     private var isPasswordValid = false
     
@@ -180,7 +180,8 @@ class SignInViewController: UIViewController,GIDSignInDelegate,GIDSignInUIDelega
                 
                 print(response!)
                 CurrentUser.sharedInstance.save()
-            
+                print(self.txtfldPassword.text!)
+                self.defaults.set(self.txtfldPassword.text, forKey: "password")
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.goToHome(true, afterLaunchScreen: true)
                 //self.startUpRequests()

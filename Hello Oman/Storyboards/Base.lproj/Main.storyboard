@@ -261,7 +261,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="WLd-6d-0iW" id="FPE-X7-qAe"/>
                                         </connections>
@@ -340,7 +340,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appBackGroundImg" translatesAutoresizingMaskIntoConstraints="NO" id="7nE-RA-ncl">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REG-97-1CJ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REG-97-1CJ" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppImage" translatesAutoresizingMaskIntoConstraints="NO" id="Ysq-dZ-x4g">
@@ -400,7 +400,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                         <connections>
                                             <outlet property="delegate" destination="5FV-Os-8ef" id="Zsy-wv-4N8"/>
                                         </connections>
@@ -502,6 +502,9 @@
                                     <constraint firstItem="5PM-AU-SLr" firstAttribute="centerX" secondItem="REG-97-1CJ" secondAttribute="centerX" id="pqB-Ld-LVS"/>
                                     <constraint firstAttribute="trailing" secondItem="dZd-Pa-YqL" secondAttribute="trailing" constant="37" id="vbX-Mv-2dz"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="5FV-Os-8ef" id="epN-IP-E9s"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

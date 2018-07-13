@@ -2,16 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>NSCameraUsageDescription</key>
-    <string>${PRODUCT_NAME} Camera Usage</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>${PRODUCT_NAME} Use location always</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>${PRODUCT_NAME} Microphone Usage</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>${PRODUCT_NAME} PhotoLibrary Usage</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>${PRODUCT_NAME} library Usage</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -44,7 +34,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.0</string>
 	<key>FacebookAppID</key>
 	<string>1727233694022426</string>
 	<key>FacebookDisplayName</key>
@@ -73,6 +63,16 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>${PRODUCT_NAME} Camera Usage</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>${PRODUCT_NAME} Use location always</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>${PRODUCT_NAME} Microphone Usage</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>${PRODUCT_NAME} library Usage</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>${PRODUCT_NAME} PhotoLibrary Usage</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Black.ttf</string>

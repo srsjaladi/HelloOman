@@ -668,7 +668,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="wAm-tJ-SnV" id="mic-qy-P5b"/>
                                                 </connections>

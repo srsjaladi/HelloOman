@@ -11,7 +11,7 @@ import MBProgressHUD
 
 class MyAccountViewController: UIViewController,UITextFieldDelegate,AQPhotoPickerViewDelegate {
 
-    
+    fileprivate var defaults: UserDefaults = UserDefaults.standard
     @IBOutlet weak var btnImageChange: UIButton!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var txtfldName: UITextField!
@@ -106,7 +106,10 @@ class MyAccountViewController: UIViewController,UITextFieldDelegate,AQPhotoPicke
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.layoutIfNeeded()
-        
+        if textField == self.txtfldPassword {
+            
+           self.validatePassword()
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -200,6 +203,29 @@ class MyAccountViewController: UIViewController,UITextFieldDelegate,AQPhotoPicke
         
     }
     
+     func validatePassword() -> Bool {
+        let originalPw = defaults.object(forKey: "password") as! String
+        if (originalPw) != "" && self.txtfldPassword.text != ""
+        {
+            if self.txtfldPassword.text  != originalPw
+            {
+                self.isPasswordValid = false
+                self.showAlert("Oops !!!", message: "Invalid password.")
+                return false
+            }
+            else
+            {
+                self.isPasswordValid = true
+                return true
+            }
+        }
+        else
+        {
+            self.isPasswordValid = true
+            return true
+        }
+    }
+    
     fileprivate func validateForm() -> Bool {
         
         if (isNameValid && isEmailValid && isPasswordValid && isPasswordValid)
@@ -223,34 +249,44 @@ class MyAccountViewController: UIViewController,UITextFieldDelegate,AQPhotoPicke
     
     
     @IBAction func btnUploadClicked(_ sender: Any) {
-        MBProgressHUD.showHUDAddedGlobal()
-        HelloOmanAPI.sharedInstance.callingUpdatedAccountAPI((CurrentUser.sharedInstance.user?.id)!, name: self.txtfldName.text!, email: self.txtfldEmail.text!, phone: self.txtfldMobile.text!, agent_id: (CurrentUser.sharedInstance.user?.agentInfo.agent_id)!, handler: { (response,responseCode, error) in
-            if let error: HelloOmanError = error {
-                MBProgressHUD.dismissGlobalHUD()
-                switch error.code {
-                case .Default:
-                    self.showErrorAlert(error)
-                    break
-                default:
-                    self.showErrorAlert(error)
-                    break
-                }
-            }
-            else
-            {
-                MBProgressHUD.dismissGlobalHUD()
-                if responseCode == "1"
-                {
-                    self.showAlert("Success !!!", message: response!)
+        
+        if self.validatePassword() {
+            
+            MBProgressHUD.showHUDAddedGlobal()
+            HelloOmanAPI.sharedInstance.callingUpdatedAccountAPI((CurrentUser.sharedInstance.user?.id)!, name: self.txtfldName.text!, email: self.txtfldEmail.text!, phone: self.txtfldMobile.text!, agent_id: (CurrentUser.sharedInstance.user?.agentInfo.agent_id)!, handler: { (response,responseCode, error) in
+                if let error: HelloOmanError = error {
+                    MBProgressHUD.dismissGlobalHUD()
+                    switch error.code {
+                    case .Default:
+                        self.showErrorAlert(error)
+                        break
+                    default:
+                        self.showErrorAlert(error)
+                        break
+                    }
                 }
                 else
                 {
-                    self.showAlert("Oops !!!", message: response!)
+                    MBProgressHUD.dismissGlobalHUD()
+                    if responseCode == "1"
+                    {
+                        CurrentUser.sharedInstance.user?.name = self.txtfldName.text!
+                        CurrentUser.sharedInstance.user?.email = self.txtfldEmail.text!
+                        CurrentUser.sharedInstance.user?.phone = self.txtfldMobile.text!
+                        
+                        CurrentUser.sharedInstance.save()
+                        print(CurrentUser.sharedInstance.user?.name)
+                        
+                        self.showAlert("Success !!!", message: response!)
+                    }
+                    else
+                    {
+                        self.showAlert("Oops !!!", message: response!)
+                    }
+                    
                 }
-                
-            }
-        })
-        
+            })
+        }
     }
     
     func getAgentDetails(uniqueId: String)  {
