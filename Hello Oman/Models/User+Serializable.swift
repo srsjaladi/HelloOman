@@ -25,12 +25,16 @@ extension User {
     {
         if let id = dictionary[Keys.id.rawValue] as? String
         {
-			let email = dictionary[Keys.email.rawValue] as? String ?? ""
-			let userName = dictionary[Keys.name.rawValue] as? String ?? ""
+            var agentInfo = [String: AnyObject]()
+            let email = dictionary[Keys.email.rawValue] as? String ?? ""
+            let userName = dictionary[Keys.name.rawValue] as? String ?? ""
             let phoneNum = dictionary[Keys.phone.rawValue] as? String ?? ""
             let imageUrl = dictionary[Keys.image.rawValue] as? String ?? ""
             let arrOfDict = dictionary[Keys.agent_info.rawValue]
-            let agentInfo = arrOfDict?.object(at: 0) as? [String: AnyObject]
+            if ((arrOfDict?.count)! > 0) && (arrOfDict != nil)
+            {
+                agentInfo = (arrOfDict?.object(at: 0) as? [String: AnyObject])!
+            }
             
             return User(id: id, email: email, name: userName, phone: phoneNum, image: imageUrl, agentInfo: agentInfo)
         }
